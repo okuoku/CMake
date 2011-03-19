@@ -58,7 +58,7 @@ static FIELD default_field = {
   (FIELD *)0,              /* link   */
   (FORM *)0,               /* form   */
   (FIELDTYPE *)0,          /* type   */
-  (char *)0,               /* arg    */ 
+  (char *)0,               /* arg    */
   (char *)0,               /* buf    */
   (char *)0                /* usrptr */
 };
@@ -66,60 +66,60 @@ static FIELD default_field = {
 FIELD *_nc_Default_Field = &default_field;
 
 /*---------------------------------------------------------------------------
-|   Facility      :  libnform  
+|   Facility      :  libnform
 |   Function      :  TypeArgument *_nc_Make_Argument(
 |                              const FIELDTYPE *typ,
 |                              va_list *ap,
 |                              int *err )
-|   
+|
 |   Description   :  Create an argument structure for the specified type.
 |                    Use the type-dependant argument list to construct
 |                    it.
 |
 |   Return Values :  Pointer to argument structure. Maybe NULL.
-|                    In case of an error in *err an errorcounter is increased. 
+|                    In case of an error in *err an errorcounter is increased.
 +--------------------------------------------------------------------------*/
 TypeArgument*
 _nc_Make_Argument(const FIELDTYPE *typ, va_list *ap, int *err)
 {
-  TypeArgument *res = (TypeArgument *)0; 
+  TypeArgument *res = (TypeArgument *)0;
   TypeArgument *p;
 
   if (typ && (typ->status & _HAS_ARGS))
     {
-      assert(err && ap);
-      if (typ->status & _LINKED_TYPE)
-	{
-	  p = (TypeArgument *)malloc(sizeof(TypeArgument));
-	  if (p) 
-	    {
-	      p->left  = _nc_Make_Argument(typ->left ,ap,err);
-	      p->right = _nc_Make_Argument(typ->right,ap,err);
-	      return p;
-	    }
-	  else
-	    *err += 1;
-      } else 
-	{
-	  assert(typ->makearg != 0);
-	  if ( !(res=(TypeArgument *)typ->makearg(ap)) ) 
-	    *err += 1;
-	}
+    assert(err && ap);
+    if (typ->status & _LINKED_TYPE)
+      {
+      p = (TypeArgument *)malloc(sizeof(TypeArgument));
+      if (p)
+        {
+        p->left  = _nc_Make_Argument(typ->left ,ap,err);
+        p->right = _nc_Make_Argument(typ->right,ap,err);
+        return p;
+        }
+      else
+        *err += 1;
+      } else
+      {
+      assert(typ->makearg != 0);
+      if ( !(res=(TypeArgument *)typ->makearg(ap)) )
+        *err += 1;
+      }
     }
   return res;
 }
 
 /*---------------------------------------------------------------------------
-|   Facility      :  libnform  
+|   Facility      :  libnform
 |   Function      :  TypeArgument *_nc_Copy_Argument(const FIELDTYPE *typ,
 |                                                    const TypeArgument *argp,
 |                                                    int *err )
-|   
-|   Description   :  Create a copy of an argument structure for the specified 
+|
+|   Description   :  Create a copy of an argument structure for the specified
 |                    type.
 |
 |   Return Values :  Pointer to argument structure. Maybe NULL.
-|                    In case of an error in *err an errorcounter is increased. 
+|                    In case of an error in *err an errorcounter is increased.
 +--------------------------------------------------------------------------*/
 TypeArgument*
 _nc_Copy_Argument(const FIELDTYPE *typ,
@@ -130,37 +130,37 @@ _nc_Copy_Argument(const FIELDTYPE *typ,
 
   if ( typ && (typ->status & _HAS_ARGS) )
     {
-      assert(err && argp);
-      if (typ->status & _LINKED_TYPE)
-	{
-	  p = (TypeArgument *)malloc(sizeof(TypeArgument));
-	  if (p)
-	    {
-	      p->left  = _nc_Copy_Argument(typ,argp->left ,err);
-	      p->right = _nc_Copy_Argument(typ,argp->right,err);
-	      return p;
-	    }
-	  *err += 1;
-      } 
-      else 
-	{
-	  if (typ->copyarg)
-	    {
-	      if (!(res = (TypeArgument *)(typ->copyarg((const void *)argp)))) 
-		*err += 1;
-	    }
-	  else
-	    res = (TypeArgument *)argp;
-	}
+    assert(err && argp);
+    if (typ->status & _LINKED_TYPE)
+      {
+      p = (TypeArgument *)malloc(sizeof(TypeArgument));
+      if (p)
+        {
+        p->left  = _nc_Copy_Argument(typ,argp->left ,err);
+        p->right = _nc_Copy_Argument(typ,argp->right,err);
+        return p;
+        }
+      *err += 1;
+      }
+    else
+      {
+      if (typ->copyarg)
+        {
+        if (!(res = (TypeArgument *)(typ->copyarg((const void *)argp))))
+          *err += 1;
+        }
+      else
+        res = (TypeArgument *)argp;
+      }
     }
   return res;
 }
 
 /*---------------------------------------------------------------------------
-|   Facility      :  libnform  
+|   Facility      :  libnform
 |   Function      :  void _nc_Free_Argument(const FIELDTYPE *typ,
 |                                           TypeArgument * argp )
-|   
+|
 |   Description   :  Release memory associated with the argument structure
 |                    for the given fieldtype.
 |
@@ -169,27 +169,27 @@ _nc_Copy_Argument(const FIELDTYPE *typ,
 void
 _nc_Free_Argument(const FIELDTYPE * typ, TypeArgument * argp)
 {
-  if (!typ || !(typ->status & _HAS_ARGS)) 
+  if (!typ || !(typ->status & _HAS_ARGS))
     return;
-  
+
   if (typ->status & _LINKED_TYPE)
     {
       assert(argp != 0);
       _nc_Free_Argument(typ->left ,argp->left );
       _nc_Free_Argument(typ->right,argp->right);
       free(argp);
-    } 
-  else 
+    }
+  else
     {
       if (typ->freearg)
-	typ->freearg((void *)argp);
+        typ->freearg((void *)argp);
     }
 }
 
 /*---------------------------------------------------------------------------
-|   Facility      :  libnform  
+|   Facility      :  libnform
 |   Function      :  bool _nc_Copy_Type( FIELD *dst, FIELD const *src )
-|   
+|
 |   Description   :  Copy argument structure of field src to field dst
 |
 |   Return Values :  TRUE       - copy worked
@@ -214,16 +214,16 @@ _nc_Copy_Type(FIELD *dst, FIELD const *src)
     }
   else
     {
-      if (dst->type) 
-	dst->type->ref++;
+      if (dst->type)
+        dst->type->ref++;
       return TRUE;
     }
 }
 
 /*---------------------------------------------------------------------------
-|   Facility      :  libnform  
+|   Facility      :  libnform
 |   Function      :  void _nc_Free_Type( FIELD *field )
-|   
+|
 |   Description   :  Release Argument structure for this field
 |
 |   Return Values :  -
@@ -232,22 +232,22 @@ void
 _nc_Free_Type(FIELD *field)
 {
   assert(field != 0);
-  if (field->type) 
+  if (field->type)
     field->type->ref--;
   _nc_Free_Argument(field->type,(TypeArgument *)(field->arg));
 }
 
 /*---------------------------------------------------------------------------
-|   Facility      :  libnform  
-|   Function      :  FIELD *new_field( int rows, int cols, 
+|   Facility      :  libnform
+|   Function      :  FIELD *new_field( int rows, int cols,
 |                                      int frow, int fcol,
 |                                      int nrow, int nbuf )
-|   
+|
 |   Description   :  Create a new field with this many 'rows' and 'cols',
 |                    starting at 'frow/fcol' in the subwindow of the form.
 |                    Allocate 'nrow' off-screen rows and 'nbuf' additional
 |                    buffers. If an error occurs, errno is set to
-|                    
+|
 |                    E_BAD_ARGUMENT - invalid argument
 |                    E_SYSTEM_ERROR - system error
 |
@@ -258,59 +258,59 @@ FIELD *new_field(int rows, int cols, int frow, int fcol, int nrow, int nbuf)
   FIELD *New_Field = (FIELD *)0;
   int err = E_BAD_ARGUMENT;
 
-  if (rows>0  && 
-      cols>0  && 
-      frow>=0 && 
-      fcol>=0 && 
-      nrow>=0 && 
+  if (rows>0  &&
+      cols>0  &&
+      frow>=0 &&
+      fcol>=0 &&
+      nrow>=0 &&
       nbuf>=0 &&
       ((err = E_SYSTEM_ERROR) != 0) && /* trick: this resets the default error */
       (New_Field=(FIELD *)malloc(sizeof(FIELD))) )
     {
-      *New_Field       = default_field;
-      New_Field->rows  = rows;
-      New_Field->cols  = cols;
-      New_Field->drows = rows + nrow;
-      New_Field->dcols = cols;
-      New_Field->frow  = frow;
-      New_Field->fcol  = fcol;
-      New_Field->nrow  = nrow;
-      New_Field->nbuf  = nbuf;
-      New_Field->link  = New_Field;
+    *New_Field       = default_field;
+    New_Field->rows  = rows;
+    New_Field->cols  = cols;
+    New_Field->drows = rows + nrow;
+    New_Field->dcols = cols;
+    New_Field->frow  = frow;
+    New_Field->fcol  = fcol;
+    New_Field->nrow  = nrow;
+    New_Field->nbuf  = nbuf;
+    New_Field->link  = New_Field;
 
-      if (_nc_Copy_Type(New_Field,&default_field))
-	{
-	  size_t len;
+    if (_nc_Copy_Type(New_Field,&default_field))
+      {
+      size_t len;
 
-	  len = Total_Buffer_Size(New_Field);
-	  if ((New_Field->buf = (char *)malloc(len)))
-	    {
-	      /* Prefill buffers with blanks and insert terminating zeroes
-		 between buffers */
-	      int i;
+      len = Total_Buffer_Size(New_Field);
+      if ((New_Field->buf = (char *)malloc(len)))
+        {
+        /* Prefill buffers with blanks and insert terminating zeroes
+           between buffers */
+        int i;
 
-	      memset(New_Field->buf,' ',len);
-	      for(i=0;i<=New_Field->nbuf;i++)
-		{
-		  New_Field->buf[(New_Field->drows*New_Field->cols+1)*(i+1)-1]
-		    = '\0';
-		}
-	      return New_Field;
-	    }
-	}
+        memset(New_Field->buf,' ',len);
+        for(i=0;i<=New_Field->nbuf;i++)
+          {
+          New_Field->buf[(New_Field->drows*New_Field->cols+1)*(i+1)-1]
+            = '\0';
+          }
+        return New_Field;
+        }
+      }
     }
 
-  if (New_Field) 
+  if (New_Field)
     free_field(New_Field);
-  
+
   SET_ERROR( err );
   return (FIELD *)0;
 }
 
 /*---------------------------------------------------------------------------
-|   Facility      :  libnform  
+|   Facility      :  libnform
 |   Function      :  int free_field( FIELD *field )
-|   
+|
 |   Description   :  Frees the storage allocated for the field.
 |
 |   Return Values :  E_OK           - success
@@ -319,24 +319,24 @@ FIELD *new_field(int rows, int cols, int frow, int fcol, int nrow, int nbuf)
 +--------------------------------------------------------------------------*/
 int free_field(FIELD * field)
 {
-  if (!field) 
+  if (!field)
     RETURN(E_BAD_ARGUMENT);
 
   if (field->form)
     RETURN(E_CONNECTED);
-  
+
   if (field == field->link)
     {
-      if (field->buf) 
-	free(field->buf);
+    if (field->buf)
+      free(field->buf);
     }
-  else 
+  else
     {
-      FIELD *f;
+    FIELD *f;
 
-      for(f=field;f->link != field;f = f->link) 
-	{}
-      f->link = field->link;
+    for(f=field;f->link != field;f = f->link)
+      {}
+    f->link = field->link;
     }
   _nc_Free_Type(field);
   free(field);

@@ -114,7 +114,7 @@ endfunction()
 # if the id's match or the compilers are compatible, then
 # call the test_fortran_c_interface_module function
 if(("${CMAKE_Fortran_COMPILER_ID}" MATCHES "Intel")
-    AND 
+    AND
     ("${CMAKE_C_COMPILER_ID}" MATCHES "MSVC")
     )
   set(COMPATABLE_COMPILERS TRUE)
@@ -129,7 +129,7 @@ else()
   message("Fortran does not match c compiler")
   message("Fortran = ${CMAKE_Fortran_COMPILER_ID}")
   message("C = ${CMAKE_C_COMPILER_ID}")
-  # hack to make g77 work after CL has been enabled 
+  # hack to make g77 work after CL has been enabled
   # as a languge, cmake needs language specific versions
   # of these variables....
   if(WIN32 AND "${CMAKE_Fortran_COMPILER_ID}" MATCHES "GNU")
@@ -161,10 +161,10 @@ if(CMAKE_Fortran_COMPILER_SUPPORTS_F90)
 
   add_executable(test_use_in_comment_fixedform
     test_use_in_comment_fixedform.f)
-  add_executable(test_use_in_comment_freeform 
+  add_executable(test_use_in_comment_freeform
     test_use_in_comment_freeform.f90)
 
-  add_executable(test_in_interface 
+  add_executable(test_in_interface
     in_interface/main.f90
     in_interface/module.f90)
 

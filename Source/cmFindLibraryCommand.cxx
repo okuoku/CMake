@@ -15,7 +15,7 @@
 #include <cmsys/stl/algorithm>
 
 cmFindLibraryCommand::cmFindLibraryCommand()
-{ 
+{
   this->EnvironmentPath = "LIB";
 }
 
@@ -163,7 +163,7 @@ void cmFindLibraryCommand::AddArchitecturePaths(const char* suffix)
 }
 
 void cmFindLibraryCommand::AddLib64Paths()
-{  
+{
   std::string voidsize =
     this->Makefile->GetSafeDefinition("CMAKE_SIZEOF_VOID_P");
   int size = atoi(voidsize.c_str());
@@ -173,7 +173,7 @@ void cmFindLibraryCommand::AddLib64Paths()
     }
   std::vector<std::string> path64;
   bool found64 = false;
-  for(std::vector<std::string>::iterator i = this->SearchPaths.begin(); 
+  for(std::vector<std::string>::iterator i = this->SearchPaths.begin();
       i != this->SearchPaths.end(); ++i)
     {
     std::string s = *i;
@@ -186,7 +186,7 @@ void cmFindLibraryCommand::AddLib64Paths()
       {
       path64.push_back(s);
       found64 = true;
-      }  
+      }
     // now just add a 64 to the path name and if it is there,
     // add it to the path
     s2 += "64/";
@@ -194,7 +194,7 @@ void cmFindLibraryCommand::AddLib64Paths()
       {
       found64 = true;
       path64.push_back(s2);
-      } 
+      }
     // now add the original unchanged path
     if(cmSystemTools::FileIsDirectory(i->c_str()))
       {

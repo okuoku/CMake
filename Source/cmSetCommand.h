@@ -17,7 +17,7 @@
 /** \class cmSetCommand
  * \brief Set a CMAKE variable
  *
- * cmSetCommand sets a variable to a value with expansion.  
+ * cmSetCommand sets a variable to a value with expansion.
  */
 class cmSetCommand : public cmCommand
 {
@@ -25,7 +25,7 @@ public:
   /**
    * This is a virtual constructor for the command.
    */
-  virtual cmCommand* Clone() 
+  virtual cmCommand* Clone()
     {
     return new cmSetCommand;
     }
@@ -46,15 +46,15 @@ public:
    * The name of the command as specified in CMakeList.txt.
    */
   virtual const char* GetName() {return "set";}
-  
+
   /**
    * Succinct documentation.
    */
-  virtual const char* GetTerseDocumentation() 
+  virtual const char* GetTerseDocumentation()
     {
     return "Set a CMAKE variable to a given value.";
     }
-  
+
   /**
    * More documentation.
    */
@@ -92,7 +92,7 @@ public:
       "  set( ENV{PATH} /home/martink )\n"
       "in which case the environment variable will be set.";
     }
-  
+
   cmTypeMacro(cmSetCommand, cmCommand);
 };
 

@@ -26,7 +26,7 @@ public:
   /**
    * This is a virtual constructor for the command.
    */
-  virtual cmCommand* Clone() 
+  virtual cmCommand* Clone()
     {
     return new cmIncludeDirectoryCommand;
     }
@@ -46,11 +46,11 @@ public:
   /**
    * Succinct documentation.
    */
-  virtual const char* GetTerseDocumentation() 
+  virtual const char* GetTerseDocumentation()
     {
     return "Add include directories to the build.";
     }
-  
+
   /**
    * More documentation.
    */
@@ -68,7 +68,7 @@ public:
       "directories are meant as system include directories on some "
       "platforms.";
     }
-  
+
   cmTypeMacro(cmIncludeDirectoryCommand, cmCommand);
 
 protected:

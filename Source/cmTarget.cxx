@@ -1420,7 +1420,7 @@ bool cmTargetTraceDependencies::IsUtility(std::string const& dep)
     // the fact that the name matched a target was just a coincidence.
     if(cmSystemTools::FileIsFullPath(dep.c_str()))
       {
-      if(t->GetType() >= cmTarget::EXECUTABLE && 
+      if(t->GetType() >= cmTarget::EXECUTABLE &&
          t->GetType() <= cmTarget::MODULE_LIBRARY)
         {
         // This is really only for compatibility so we do not need to

@@ -35,7 +35,7 @@ int cm_failed = 0;
 
 void cmFailed(const char* Message, const char* m2= "", const char* m3 = "")
 {
-  std::cout << "FAILED: " << Message << m2 << m3 << "\n"; 
+  std::cout << "FAILED: " << Message << m2 << m3 << "\n";
   cm_failed++;
 }
 
@@ -43,7 +43,7 @@ void cmFailed(const char* Message, const char* m2= "", const char* m3 = "")
 
 void cmPassed(const char* Message, const char* m2="")
 {
-  std::cout << "Passed: " << Message << m2 << "\n"; 
+  std::cout << "Passed: " << Message << m2 << "\n";
   cm_passed++;
 }
 
@@ -70,7 +70,7 @@ void cmPassed(const char* Message, const char* m2="")
 #ifdef COMPLEX_TEST_CMAKELIB
 // ======================================================================
 
-void TestAndRemoveFile(const char* filename) 
+void TestAndRemoveFile(const char* filename)
 {
   if (!cmSystemTools::FileExists(filename))
     {
@@ -91,7 +91,7 @@ void TestAndRemoveFile(const char* filename)
 
 // ======================================================================
 
-void TestDir(const char* filename) 
+void TestDir(const char* filename)
 {
   if (!cmSystemTools::FileExists(filename))
     {
@@ -203,7 +203,7 @@ void ForceStringUse()
   std::string cachetest = CACHE_TEST_VAR_INTERNAL;
   v.push_back(cachetest);
   v2 = v;
-  std::string x(5,'x');  
+  std::string x(5,'x');
   char buff[5];
   x.copy(buff, 1, 0);
   x[0] = 'a';
@@ -245,12 +245,12 @@ int main()
   exe += "/";
 #endif
 
-#ifdef COMPLEX_TEST_CMAKELIB  
+#ifdef COMPLEX_TEST_CMAKELIB
   // Test a single character executable to test a: in makefiles
   exe += "A";
   exe += cmSystemTools::GetExecutableExtension();
   int ret;
-  std::string errorMessage; 
+  std::string errorMessage;
   exe = cmSystemTools::ConvertToRunCommandPath(exe.c_str());
   if(cmSystemTools::RunSingleCommand(exe.c_str(), 0, &ret))
     {
@@ -273,7 +273,7 @@ int main()
     {
     cmPassed("run Single Character executable A returned 10 as expected.");
     }
-  
+
   lib += CMAKE_SHARED_MODULE_PREFIX;
   lib += "CMakeTestModule";
   lib += CMAKE_SHARED_MODULE_SUFFIX;
@@ -286,8 +286,8 @@ int main()
     }
   else
     {
-    cmsys::DynamicLoader::SymbolPointer fun = 
-      cmsys::DynamicLoader::GetSymbolAddress(handle, "ModuleFunction"); 
+    cmsys::DynamicLoader::SymbolPointer fun =
+      cmsys::DynamicLoader::GetSymbolAddress(handle, "ModuleFunction");
     if(!fun)
       {
       fun = cmsys::DynamicLoader::GetSymbolAddress(handle, "_ModuleFunction");
@@ -308,7 +308,7 @@ int main()
         cmPassed("Module loaded and ModuleFunction called correctly.");
       }
     }
-  cmDynamicLoader::FlushCache(); // fix memory leaks 
+  cmDynamicLoader::FlushCache(); // fix memory leaks
   if(sharedFunction() != 1)
     {
     cmFailed("Call to sharedFunction from shared library failed.");
@@ -325,7 +325,7 @@ int main()
     {
     cmPassed("Call to C sharedFunction from shared library worked.");
     }
-  
+
     // ----------------------------------------------------------------------
   // Test cmSystemTools::UpperCase
   std::string str = "abc";
@@ -337,7 +337,7 @@ int main()
   else
     {
     cmFailed("cmSystemTools::UpperCase is working");
-    }    
+    }
 #endif
 #if 0
   if(NameConflictTest1() == 0 && NameConflictTest2() == 0)
@@ -362,7 +362,7 @@ int main()
 #else
   cmPassed("COMPILE_FLAGS did work with SET_TARGET_PROPERTIES");
 #endif
-  
+
 #ifdef ELSEIF_RESULT
   cmPassed("ELSEIF did work");
 #else
@@ -425,8 +425,8 @@ int main()
 #else
   cmPassed("CMAKE_IS_FUN is defined.");
 #endif
-  
-#if defined(CMAKE_ARGV1) && defined(CMAKE_ARGV2) && defined(CMAKE_ARGV3) && defined(CMAKE_ARGV4) 
+
+#if defined(CMAKE_ARGV1) && defined(CMAKE_ARGV2) && defined(CMAKE_ARGV3) && defined(CMAKE_ARGV4)
   cmPassed("Variable args for MACROs are working.");
 #else
   cmFailed("Variable args for MACROs are failing.");
@@ -447,7 +447,7 @@ int main()
 #else
   cmPassed("CMake found the parent directory properly");
 #endif
-  
+
   // ----------------------------------------------------------------------
   // Test GET_DIRECTORY_PROPERTY for listfiles
 #ifndef CMAKE_FOUND_LISTFILE_STACK
@@ -455,7 +455,7 @@ int main()
 #else
   cmPassed("CMake found the listfile stack properly");
 #endif
-  
+
   // ----------------------------------------------------------------------
   // Test SET, VARIABLE_REQUIRES
 
@@ -464,38 +464,38 @@ int main()
 #else
   cmPassed("SHOULD_NOT_BE_DEFINED is not defined.");
 #endif
-  
+
 #ifndef SHOULD_BE_DEFINED
   cmFailed("IF or SET is broken, SHOULD_BE_DEFINED is not defined.\n");
 #else
   cmPassed("SHOULD_BE_DEFINED is defined.");
 #endif
-  
+
 #ifndef ONE_VAR
   cmFailed("cmakedefine is broken, ONE_VAR is not defined.");
 #else
   cmPassed("ONE_VAR is defined.");
 #endif
-  
+
 #ifndef ONE_VAR_IS_DEFINED
   cmFailed("cmakedefine, SET or VARIABLE_REQUIRES is broken, "
          "ONE_VAR_IS_DEFINED is not defined.");
 #else
   cmPassed("ONE_VAR_IS_DEFINED is defined.");
 #endif
-  
+
 #ifdef ZERO_VAR
   cmFailed("cmakedefine is broken, ZERO_VAR is defined.");
 #else
   cmPassed("ZERO_VAR is not defined.");
 #endif
-  
+
 #ifndef STRING_VAR
   cmFailed("the CONFIGURE_FILE command is broken, STRING_VAR is not defined.");
 #else
   if(strcmp(STRING_VAR, "CMake is great") != 0)
     {
-    cmFailed("the SET or CONFIGURE_FILE command is broken. STRING_VAR == ", 
+    cmFailed("the SET or CONFIGURE_FILE command is broken. STRING_VAR == ",
            STRING_VAR);
     }
   else
@@ -512,145 +512,145 @@ int main()
 #else
   cmPassed("SHOULD_NOT_BE_DEFINED_NOT is not defined.");
 #endif
-  
+
 #ifndef SHOULD_BE_DEFINED_NOT
   cmFailed("IF or SET is broken, SHOULD_BE_DEFINED_NOT is not defined.\n");
 #else
   cmPassed("SHOULD_BE_DEFINED_NOT is defined.");
 #endif
-  
+
 #ifdef SHOULD_NOT_BE_DEFINED_NOT2
   cmFailed("IF or SET is broken, SHOULD_NOT_BE_DEFINED_NOT2 is defined.");
 #else
   cmPassed("SHOULD_NOT_BE_DEFINED_NOT2 is not defined.");
 #endif
-  
+
 #ifndef SHOULD_BE_DEFINED_NOT2
   cmFailed("IF or SET is broken, SHOULD_BE_DEFINED_NOT2 is not defined.\n");
 #else
   cmPassed("SHOULD_BE_DEFINED_NOT2 is defined.");
 #endif
-  
+
 #ifdef SHOULD_NOT_BE_DEFINED_AND
   cmFailed("IF or SET is broken, SHOULD_NOT_BE_DEFINED_AND is defined.");
 #else
   cmPassed("SHOULD_NOT_BE_DEFINED_AND is not defined.");
 #endif
-  
+
 #ifndef SHOULD_BE_DEFINED_AND
   cmFailed("IF or SET is broken, SHOULD_BE_DEFINED_AND is not defined.\n");
 #else
   cmPassed("SHOULD_BE_DEFINED_AND is defined.");
 #endif
-  
+
 #ifdef SHOULD_NOT_BE_DEFINED_AND2
   cmFailed("IF or SET is broken, SHOULD_NOT_BE_DEFINED_AND2 is defined.");
 #else
   cmPassed("SHOULD_NOT_BE_DEFINED_AND2 is not defined.");
 #endif
-  
+
 #ifndef SHOULD_BE_DEFINED_AND2
   cmFailed("IF or SET is broken, SHOULD_BE_DEFINED_AND2 is not defined.\n");
 #else
   cmPassed("SHOULD_BE_DEFINED_AND2 is defined.");
 #endif
-  
+
 #ifdef SHOULD_NOT_BE_DEFINED_OR
   cmFailed("IF or SET is broken, SHOULD_NOT_BE_DEFINED_OR is defined.");
 #else
   cmPassed("SHOULD_NOT_BE_DEFINED_OR is not defined.");
 #endif
-  
+
 #ifndef SHOULD_BE_DEFINED_OR
   cmFailed("IF or SET is broken, SHOULD_BE_DEFINED_OR is not defined.\n");
 #else
   cmPassed("SHOULD_BE_DEFINED_OR is defined.");
 #endif
-  
+
 #ifdef SHOULD_NOT_BE_DEFINED_OR2
   cmFailed("IF or SET is broken, SHOULD_NOT_BE_DEFINED_OR2 is defined.");
 #else
   cmPassed("SHOULD_NOT_BE_DEFINED_OR2 is not defined.");
 #endif
-  
+
 #ifndef SHOULD_BE_DEFINED_OR2
   cmFailed("IF or SET is broken, SHOULD_BE_DEFINED_OR2 is not defined.\n");
 #else
   cmPassed("SHOULD_BE_DEFINED_OR2 is defined.");
 #endif
-  
+
 #ifdef SHOULD_NOT_BE_DEFINED_MATCHES
   cmFailed("IF or SET is broken, SHOULD_NOT_BE_DEFINED_MATCHES is defined.");
 #else
   cmPassed("SHOULD_NOT_BE_DEFINED_MATCHES is not defined.");
 #endif
-  
+
 #ifndef SHOULD_BE_DEFINED_MATCHES
   cmFailed("IF or SET is broken, SHOULD_BE_DEFINED_MATCHES is not defined.\n");
 #else
   cmPassed("SHOULD_BE_DEFINED_MATCHES is defined.");
 #endif
-  
+
 #ifdef SHOULD_NOT_BE_DEFINED_MATCHES2
   cmFailed("IF or SET is broken, SHOULD_NOT_BE_DEFINED_MATCHES2 is defined.");
 #else
   cmPassed("SHOULD_NOT_BE_DEFINED_MATCHES2 is not defined.");
 #endif
-  
+
 #ifndef SHOULD_BE_DEFINED_MATCHES2
   cmFailed("IF or SET is broken, SHOULD_BE_DEFINED_MATCHES2 is not defined.\n");
 #else
   cmPassed("SHOULD_BE_DEFINED_MATCHES2 is defined.");
 #endif
-  
+
 #ifdef SHOULD_NOT_BE_DEFINED_COMMAND
   cmFailed("IF or SET is broken, SHOULD_NOT_BE_DEFINED_COMMAND is defined.");
 #else
   cmPassed("SHOULD_NOT_BE_DEFINED_COMMAND is not defined.");
 #endif
-  
+
 #ifndef SHOULD_BE_DEFINED_COMMAND
   cmFailed("IF or SET is broken, SHOULD_BE_DEFINED_COMMAND is not defined.\n");
 #else
   cmPassed("SHOULD_BE_DEFINED_COMMAND is defined.");
 #endif
-  
+
 #ifdef SHOULD_NOT_BE_DEFINED_COMMAND2
   cmFailed("IF or SET is broken, SHOULD_NOT_BE_DEFINED_COMMAND2 is defined.");
 #else
   cmPassed("SHOULD_NOT_BE_DEFINED_COMMAND2 is not defined.");
 #endif
-  
+
 #ifndef SHOULD_BE_DEFINED_COMMAND2
   cmFailed("IF or SET is broken, SHOULD_BE_DEFINED_COMMAND2 is not defined.\n");
 #else
   cmPassed("SHOULD_BE_DEFINED_COMMAND2 is defined.");
 #endif
-  
+
 #ifdef SHOULD_NOT_BE_DEFINED_EXISTS
   cmFailed("IF or SET is broken, SHOULD_NOT_BE_DEFINED_EXISTS is defined.");
 #else
   cmPassed("SHOULD_NOT_BE_DEFINED_EXISTS is not defined.");
 #endif
-  
+
 #ifndef SHOULD_BE_DEFINED_EXISTS
   cmFailed("IF or SET is broken, SHOULD_BE_DEFINED_EXISTS is not defined.\n");
 #else
   cmPassed("SHOULD_BE_DEFINED_EXISTS is defined.");
 #endif
-  
+
 #ifdef SHOULD_NOT_BE_DEFINED_EXISTS2
   cmFailed("IF or SET is broken, SHOULD_NOT_BE_DEFINED_EXISTS2 is defined.");
 #else
   cmPassed("SHOULD_NOT_BE_DEFINED_EXISTS2 is not defined.");
 #endif
-  
+
 #ifndef SHOULD_BE_DEFINED_EXISTS2
   cmFailed("IF or SET is broken, SHOULD_BE_DEFINED_EXISTS2 is not defined.\n");
 #else
   cmPassed("SHOULD_BE_DEFINED_EXISTS2 is defined.");
 #endif
-  
+
 #ifndef SHOULD_BE_DEFINED_IS_DIRECTORY
   cmFailed("IF or SET is broken, SHOULD_BE_DEFINED_IS_DIRECTORY is not defined.\n");
 #else
@@ -668,31 +668,31 @@ int main()
 #else
   cmPassed("SHOULD_NOT_BE_DEFINED_LESS is not defined.");
 #endif
-  
+
 #ifndef SHOULD_BE_DEFINED_LESS
   cmFailed("IF or SET is broken, SHOULD_BE_DEFINED_LESS is not defined.\n");
 #else
   cmPassed("SHOULD_BE_DEFINED_LESS is defined.");
 #endif
-  
+
 #ifdef SHOULD_NOT_BE_DEFINED_LESS2
   cmFailed("IF or SET is broken, SHOULD_NOT_BE_DEFINED_LESS2 is defined.");
 #else
   cmPassed("SHOULD_NOT_BE_DEFINED_LESS2 is not defined.");
 #endif
-  
+
 #ifndef SHOULD_BE_DEFINED_LESS2
   cmFailed("IF or SET is broken, SHOULD_BE_DEFINED_LESS2 is not defined.\n");
 #else
   cmPassed("SHOULD_BE_DEFINED_LESS2 is defined.");
 #endif
-  
+
 #ifdef SHOULD_NOT_BE_DEFINED_GREATER
   cmFailed("IF or SET is broken, SHOULD_NOT_BE_DEFINED_GREATER is defined.");
 #else
   cmPassed("SHOULD_NOT_BE_DEFINED_GREATER is not defined.");
 #endif
-  
+
 #ifdef SHOULD_NOT_BE_DEFINED_EQUAL
   cmFailed("IF or SET is broken, SHOULD_NOT_BE_DEFINED_EQUAL is defined.");
 #else
@@ -710,67 +710,67 @@ int main()
 #else
   cmPassed("SHOULD_BE_DEFINED_GREATER is defined.");
 #endif
-  
+
 #ifdef SHOULD_NOT_BE_DEFINED_GREATER2
   cmFailed("IF or SET is broken, SHOULD_NOT_BE_DEFINED_GREATER2 is defined.");
 #else
   cmPassed("SHOULD_NOT_BE_DEFINED_GREATER2 is not defined.");
 #endif
-  
+
 #ifndef SHOULD_BE_DEFINED_GREATER2
   cmFailed("IF or SET is broken, SHOULD_BE_DEFINED_GREATER2 is not defined.\n");
 #else
   cmPassed("SHOULD_BE_DEFINED_GREATER2 is defined.");
 #endif
-  
+
 #ifdef SHOULD_NOT_BE_DEFINED_STRLESS
   cmFailed("IF or SET is broken, SHOULD_NOT_BE_DEFINED_STRLESS is defined.");
 #else
   cmPassed("SHOULD_NOT_BE_DEFINED_STRLESS is not defined.");
 #endif
-  
+
 #ifndef SHOULD_BE_DEFINED_STRLESS
   cmFailed("IF or SET is broken, SHOULD_BE_DEFINED_STRLESS is not defined.\n");
 #else
   cmPassed("SHOULD_BE_DEFINED_STRLESS is defined.");
 #endif
-  
+
 #ifdef SHOULD_NOT_BE_DEFINED_STRLESS2
   cmFailed("IF or SET is broken, SHOULD_NOT_BE_DEFINED_STRLESS2 is defined.");
 #else
   cmPassed("SHOULD_NOT_BE_DEFINED_STRLESS2 is not defined.");
 #endif
-  
+
 #ifndef SHOULD_BE_DEFINED_STRLESS2
   cmFailed("IF or SET is broken, SHOULD_BE_DEFINED_STRLESS2 is not defined.\n");
 #else
   cmPassed("SHOULD_BE_DEFINED_STRLESS2 is defined.");
 #endif
-  
+
 #ifdef SHOULD_NOT_BE_DEFINED_STRGREATER
   cmFailed("IF or SET is broken, SHOULD_NOT_BE_DEFINED_STRGREATER is defined.");
 #else
   cmPassed("SHOULD_NOT_BE_DEFINED_STRGREATER is not defined.");
 #endif
-  
+
 #ifndef SHOULD_BE_DEFINED_STRGREATER
   cmFailed("IF or SET is broken, SHOULD_BE_DEFINED_STRGREATER is not defined.\n");
 #else
   cmPassed("SHOULD_BE_DEFINED_STRGREATER is defined.");
 #endif
-  
+
 #ifdef SHOULD_NOT_BE_DEFINED_STRGREATER2
   cmFailed("IF or SET is broken, SHOULD_NOT_BE_DEFINED_STRGREATER2 is defined.");
 #else
   cmPassed("SHOULD_NOT_BE_DEFINED_STRGREATER2 is not defined.");
 #endif
-  
+
 #ifndef SHOULD_BE_DEFINED_STRGREATER2
   cmFailed("IF or SET is broken, SHOULD_BE_DEFINED_STRGREATER2 is not defined.\n");
 #else
   cmPassed("SHOULD_BE_DEFINED_STRGREATER2 is defined.");
 #endif
-  
+
   // ----------------------------------------------------------------------
   // Test FOREACH
 
@@ -821,7 +821,7 @@ int main()
 
   // ----------------------------------------------------------------------
   // Test WHILE
-  
+
   if(WHILE_VALUE != 1000)
     {
     cmFailed("WHILE command is not working");
@@ -984,7 +984,7 @@ int main()
     }
 #endif
 
-#ifdef COMPLEX_TEST_CMAKELIB  
+#ifdef COMPLEX_TEST_CMAKELIB
   // ----------------------------------------------------------------------
   // Some pre-build/pre-link/post-build custom-commands have been
   // attached to the lib (see Library/).
@@ -1014,7 +1014,7 @@ int main()
   // only created during a build.
 
   TestAndRemoveFile(BINARY_DIR "/Library/custom_target1.txt");
-  
+
   // ----------------------------------------------------------------------
   // A directory has been created.
 
@@ -1091,7 +1091,7 @@ int main()
 #else
   if(strcmp(FILE_COMPILE_FLAGS, "-foo -bar") != 0)
     {
-    cmFailed("the SET_SOURCE_FILES_PROPERTIES or CONFIGURE_FILE command is broken. FILE_COMPILE_FLAGS == ", 
+    cmFailed("the SET_SOURCE_FILES_PROPERTIES or CONFIGURE_FILE command is broken. FILE_COMPILE_FLAGS == ",
              FILE_COMPILE_FLAGS);
     }
   else
@@ -1109,7 +1109,7 @@ int main()
   std::cout << "REGISTRY_TEST_PATH == " << REGISTRY_TEST_PATH << "\n";
   if(stricmp(REGISTRY_TEST_PATH, BINARY_DIR "/registry_dir") != 0)
     {
-    cmFailed("the 'read registry value' function or CONFIGURE_FILE command is broken. REGISTRY_TEST_PATH == ", 
+    cmFailed("the 'read registry value' function or CONFIGURE_FILE command is broken. REGISTRY_TEST_PATH == ",
              REGISTRY_TEST_PATH, " is not " BINARY_DIR "/registry_dir");
     }
   else
@@ -1138,7 +1138,7 @@ int main()
     {
     cmFailed("REMOVE is not working");
     }
-  
+
   // ----------------------------------------------------------------------
   // Test SEPARATE_ARGUMENTS
   if(strcmp("a;b;c", TEST_SEP) == 0)
@@ -1149,7 +1149,7 @@ int main()
     {
     cmFailed("SEPARATE_ARGUMENTS is not working");
     }
-  
+
   // ----------------------------------------------------------------------
   // Test Escape Quotes
   if(strcmp("\"hello world\"", STRING_WITH_QUOTES) == 0)
@@ -1160,8 +1160,8 @@ int main()
     {
     cmFailed("ESCAPE_QUOTES is not working");
     }
-    
-  
+
+
   // ----------------------------------------------------------------------
   // Test if IF command inside a FOREACH works.
 #if defined(IF_INSIDE_FOREACH_THEN_EXECUTED) && !defined(IF_INSIDE_FOREACH_ELSE_EXECUTED)
@@ -1182,7 +1182,7 @@ int main()
   else
     {
     cmFailed("cmakedefine01 is not working for 0");
-    }  
+    }
   if(SHOULD_BE_ONE == 1)
     {
     cmPassed("cmakedefine01 is working for 1");
@@ -1190,7 +1190,7 @@ int main()
   else
     {
     cmFailed("cmakedefine01 is not working for 1");
-    }  
+    }
 #ifdef FORCE_TEST
   cmFailed("CMake SET CACHE FORCE");
 #else

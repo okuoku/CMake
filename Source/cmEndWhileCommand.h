@@ -25,7 +25,7 @@ public:
   /**
    * This is a virtual constructor for the command.
    */
-  virtual cmCommand* Clone() 
+  virtual cmCommand* Clone()
     {
     return new cmEndWhileCommand;
     }
@@ -36,7 +36,7 @@ public:
    */
   virtual bool InvokeInitialPass(std::vector<cmListFileArgument> const&,
                                  cmExecutionStatus &status);
-  
+
   /**
    * This is called when the command is first encountered in
    * the CMakeLists.txt file.
@@ -57,11 +57,11 @@ public:
   /**
    * Succinct documentation.
    */
-  virtual const char* GetTerseDocumentation() 
+  virtual const char* GetTerseDocumentation()
     {
     return "Ends a list of commands in a while block.";
     }
-  
+
   /**
    * More documentation.
    */
@@ -71,7 +71,7 @@ public:
       "  endwhile(expression)\n"
       "See the while command.";
     }
-  
+
   cmTypeMacro(cmEndWhileCommand, cmCommand);
 };
 

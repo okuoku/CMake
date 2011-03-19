@@ -34,7 +34,7 @@
 # Boost that contain header files only (e.g. foreach) you do not need to
 # specify COMPONENTS.
 #
-# You should provide a minimum version number that should be used. If you provide this 
+# You should provide a minimum version number that should be used. If you provide this
 # version number and specify the REQUIRED attribute, this module will fail if it
 # can't find the specified or a later version. If you specify a version number this is
 # automatically put into the considered list of version numbers and thus doesn't need
@@ -134,7 +134,7 @@
 #                                unless this is set to TRUE or the REQUIRED
 #                                keyword is specified in find_package().
 #                                  [Since CMake 2.8.0]
-# 
+#
 #   Boost_COMPILER               Set this to the compiler suffix used by Boost
 #                                (e.g. "-gcc43") if FindBoost has problems finding
 #                                the proper Boost installation
@@ -372,7 +372,7 @@ endfunction()
 
 #
 # End functions/macros
-#  
+#
 #-------------------------------------------------------------------------------
 
 

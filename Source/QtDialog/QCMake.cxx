@@ -32,9 +32,9 @@ QCMake::QCMake(QObject* p)
   this->WarnUnusedMode = false;
   qRegisterMetaType<QCMakeProperty>();
   qRegisterMetaType<QCMakePropertyList>();
-  
+
   QDir execDir(QCoreApplication::applicationDirPath());
-  
+
 #if defined(Q_OS_MAC)
   if(execDir.exists("../bin/cmake"))
     {
@@ -45,7 +45,7 @@ QCMake::QCMake(QObject* p)
     execDir.cd("../../../");  // path to cmake in build directory (need to fix for deployment)
     }
 #endif
-  
+
   QString cmakeCommand = QString("cmake")+cmSystemTools::GetExecutableExtension();
   cmakeCommand = execDir.filePath(cmakeCommand);
 
@@ -58,7 +58,7 @@ QCMake::QCMake(QObject* p)
   this->CMakeInstance->SetCMakeCommand(cmakeCommand.toAscii().data());
 #if defined(Q_OS_MAC)
   this->CMakeInstance->SetCMakeEditCommand("cmake-gui.app/Contents/MacOS/cmake-gui");
-#else  
+#else
   this->CMakeInstance->SetCMakeEditCommand("cmake-gui");
 #endif
   this->CMakeInstance->SetProgressCallback(QCMake::progressCallback, this);
@@ -94,7 +94,7 @@ void QCMake::loadCache(const QString& dir)
 
 void QCMake::setSourceDirectory(const QString& _dir)
 {
-  QString dir = 
+  QString dir =
     cmSystemTools::GetActualCaseForPath(_dir.toAscii().data()).c_str();
   if(this->SourceDirectory != dir)
     {
@@ -105,7 +105,7 @@ void QCMake::setSourceDirectory(const QString& _dir)
 
 void QCMake::setBinaryDirectory(const QString& _dir)
 {
-  QString dir = 
+  QString dir =
     cmSystemTools::GetActualCaseForPath(_dir.toAscii().data()).c_str();
   if(this->BinaryDirectory != dir)
     {
@@ -124,7 +124,7 @@ void QCMake::setBinaryDirectory(const QString& _dir)
             "Please check the permissions of the directory you are trying to run CMake on.");
         }
       }
-    
+
     QCMakePropertyList props = this->properties();
     emit this->propertiesChanged(props);
     cmCacheManager::CacheIterator itm = cachem->NewIterator();
@@ -197,7 +197,7 @@ void QCMake::generate()
 
   emit this->generateDone(err);
 }
-  
+
 void QCMake::setProperties(const QCMakePropertyList& newProps)
 {
   QCMakePropertyList props = newProps;
@@ -246,7 +246,7 @@ void QCMake::setProperties(const QCMakePropertyList& newProps)
 
     cachem->RemoveCacheEntry(s.toAscii().data());
     }
-  
+
   // add some new properites
   foreach(QCMakeProperty s, props)
     {
@@ -281,7 +281,7 @@ void QCMake::setProperties(const QCMakePropertyList& newProps)
                             cmCacheManager::FILEPATH);
       }
     }
-  
+
   cachem->SaveCache(this->BinaryDirectory.toAscii().data());
 }
 
@@ -334,7 +334,7 @@ QCMakePropertyList QCMake::properties() const
 
   return ret;
 }
-  
+
 void QCMake::interrupt()
 {
   cmSystemTools::SetFatalErrorOccured();
@@ -405,7 +405,7 @@ void QCMake::reloadCache()
   props = this->properties();
   emit this->propertiesChanged(props);
 }
-  
+
 void QCMake::setDebugOutput(bool flag)
 {
   if(flag != this->CMakeInstance->GetDebugOutput())

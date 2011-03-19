@@ -37,7 +37,7 @@
 #ifdef __BORLANDC__
 # pragma warn -8027 /* 'for' not inlined.  */
 # pragma warn -8026 /* 'exception' not inlined.  */
-#endif 
+#endif
 
 #ifndef @KWSYS_NAMESPACE@_hashtable_hxx
 #define @KWSYS_NAMESPACE@_hashtable_hxx

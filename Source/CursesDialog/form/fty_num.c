@@ -27,9 +27,9 @@ typedef struct {
 } numericARG;
 
 /*---------------------------------------------------------------------------
-|   Facility      :  libnform  
+|   Facility      :  libnform
 |   Function      :  static void *Make_Numeric_Type(va_list * ap)
-|   
+|
 |   Description   :  Allocate structure for numeric type argument.
 |
 |   Return Values :  Pointer to argument structure or NULL on error
@@ -53,10 +53,10 @@ static void *Make_Numeric_Type(va_list * ap)
 }
 
 /*---------------------------------------------------------------------------
-|   Facility      :  libnform  
+|   Facility      :  libnform
 |   Function      :  static void *Copy_Numeric_Type(const void * argp)
-|   
-|   Description   :  Copy structure for numeric type argument.  
+|
+|   Description   :  Copy structure for numeric type argument.
 |
 |   Return Values :  Pointer to argument structure or NULL on error.
 +--------------------------------------------------------------------------*/
@@ -69,30 +69,30 @@ static void *Copy_Numeric_Type(const void * argp)
     {
       result = (numericARG *)malloc(sizeof(numericARG));
       if (result)
-	*result  = *ap;
+        *result  = *ap;
     }
   return (void *)result;
 }
 
 /*---------------------------------------------------------------------------
-|   Facility      :  libnform  
+|   Facility      :  libnform
 |   Function      :  static void Free_Numeric_Type(void * argp)
-|   
+|
 |   Description   :  Free structure for numeric type argument.
 |
 |   Return Values :  -
 +--------------------------------------------------------------------------*/
 static void Free_Numeric_Type(void * argp)
 {
-  if (argp) 
+  if (argp)
     free(argp);
 }
 
 /*---------------------------------------------------------------------------
-|   Facility      :  libnform  
+|   Facility      :  libnform
 |   Function      :  static bool Check_Numeric_Field(FIELD * field,
 |                                                    const void * argp)
-|   
+|
 |   Description   :  Validate buffer content to be a valid numeric value
 |
 |   Return Values :  TRUE  - field is valid
@@ -112,48 +112,48 @@ static bool Check_Numeric_Field(FIELD * field, const void * argp)
   while(*bp && *bp==' ') bp++;
   if (*bp)
     {
-      if (*bp=='-' || *bp=='+')
-	bp++;
-      while(*bp)
-	{
-	  if (!isdigit(*bp)) break;
-	  bp++;
-	}
-      if (*bp==(
+    if (*bp=='-' || *bp=='+')
+      bp++;
+    while(*bp)
+      {
+      if (!isdigit(*bp)) break;
+      bp++;
+      }
+    if (*bp==(
 #if HAVE_LOCALE_H
-		(L && L->decimal_point) ? *(L->decimal_point) :
+              (L && L->decimal_point) ? *(L->decimal_point) :
 #endif
-		'.'))
-	{
-	  bp++;
-	  while(*bp)
-	    {
-	      if (!isdigit(*bp)) break;
-	      bp++;
-	    }
-	}
-      while(*bp && *bp==' ') bp++;
-      if (*bp=='\0')
-	{
-	  val = atof(s);
-	  if (low<high)
-	    {
-	      if (val<low || val>high) return FALSE;
-	    }
-	  sprintf(buf,"%.*f",(prec>0?prec:0),val);
-	  set_field_buffer(field,0,buf);
-	  return TRUE;
-	}
+              '.'))
+      {
+      bp++;
+      while(*bp)
+        {
+        if (!isdigit(*bp)) break;
+        bp++;
+        }
+      }
+    while(*bp && *bp==' ') bp++;
+    if (*bp=='\0')
+      {
+      val = atof(s);
+      if (low<high)
+        {
+        if (val<low || val>high) return FALSE;
+        }
+      sprintf(buf,"%.*f",(prec>0?prec:0),val);
+      set_field_buffer(field,0,buf);
+      return TRUE;
+      }
     }
   return FALSE;
 }
 
 /*---------------------------------------------------------------------------
-|   Facility      :  libnform  
+|   Facility      :  libnform
 |   Function      :  static bool Check_Numeric_Character(
 |                                      int c,
 |                                      const void * argp)
-|   
+|
 |   Description   :  Check a character for the numeric type.
 |
 |   Return Values :  TRUE  - character is valid
@@ -162,15 +162,15 @@ static bool Check_Numeric_Field(FIELD * field, const void * argp)
 static bool Check_Numeric_Character(int c, const void * argp)
 {
   argp=0; /* Silence unused parameter warning.  */
-  return (isdigit(c)  || 
-	  c == '+'    || 
-	  c == '-'    || 
-	  c == (
+  return (isdigit(c)  ||
+          c == '+'    ||
+          c == '-'    ||
+          c == (
 #if HAVE_LOCALE_H
-		(L && L->decimal_point) ? *(L->decimal_point) :
+                (L && L->decimal_point) ? *(L->decimal_point) :
 #endif
-		'.')
-	  ) ? TRUE : FALSE;
+                '.')
+          ) ? TRUE : FALSE;
 }
 
 static FIELDTYPE typeNUMERIC = {

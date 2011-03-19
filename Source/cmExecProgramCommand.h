@@ -27,7 +27,7 @@ public:
   /**
    * This is a virtual constructor for the command.
    */
-  virtual cmCommand* Clone() 
+  virtual cmCommand* Clone()
     {
     return new cmExecProgramCommand;
     }
@@ -38,13 +38,13 @@ public:
    */
   virtual bool InitialPass(std::vector<std::string> const& args,
                            cmExecutionStatus &status);
-  
+
   /**
    * The name of the command as specified in CMakeList.txt.
    */
-  virtual const char* GetName() 
+  virtual const char* GetName()
     {return "exec_program";}
-  
+
   /**
    * This determines if the command is invoked when in script mode.
    */
@@ -53,12 +53,12 @@ public:
   /**
    * Succinct documentation.
    */
-  virtual const char* GetTerseDocumentation() 
+  virtual const char* GetTerseDocumentation()
     {
-    return 
+    return
       "Deprecated.  Use the execute_process() command instead.";
     }
-  
+
   /**
    * More documentation.
    */
@@ -82,7 +82,7 @@ public:
       "stdout/stderr of the console running cmake.\n"
       ;
     }
-  
+
   /** This command is kept for compatibility with older CMake versions. */
   virtual bool IsDiscouraged()
     {

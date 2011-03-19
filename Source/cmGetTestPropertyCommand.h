@@ -17,7 +17,7 @@
 class cmGetTestPropertyCommand : public cmCommand
 {
 public:
-  virtual cmCommand* Clone() 
+  virtual cmCommand* Clone()
     {
     return new cmGetTestPropertyCommand;
     }
@@ -37,7 +37,7 @@ public:
   /**
    * Succinct documentation.
    */
-  virtual const char* GetTerseDocumentation() 
+  virtual const char* GetTerseDocumentation()
     {
     return "Get a property of the test.";
     }

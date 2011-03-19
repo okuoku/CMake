@@ -35,9 +35,9 @@
 MODULE_ID("$Id$")
 
 /*---------------------------------------------------------------------------
-|   Facility      :  libnform  
+|   Facility      :  libnform
 |   Function      :  int set_max_field(FIELD *field, int maxgrow)
-|   
+|
 |   Description   :  Set the maximum growth for a dynamic field. If maxgrow=0
 |                    the field may grow to any possible size.
 |
@@ -50,25 +50,25 @@ int set_max_field(FIELD *field, int maxgrow)
     RETURN(E_BAD_ARGUMENT);
   else
     {
-      bool single_line_field = Single_Line_Field(field);
+    bool single_line_field = Single_Line_Field(field);
 
-      if (maxgrow>0)
-	{
-	  if (( single_line_field && (maxgrow < field->dcols)) ||
-	      (!single_line_field && (maxgrow < field->drows)))
-	    RETURN(E_BAD_ARGUMENT);
-	}
-      field->maxgrow = maxgrow;
-      field->status &= ~_MAY_GROW;
-      if (!(field->opts & O_STATIC))
-	{
-	  if ((maxgrow==0) ||
-	      ( single_line_field && (field->dcols < maxgrow)) ||
-	      (!single_line_field && (field->drows < maxgrow)))
-	    field->status |= _MAY_GROW;
-	}
+    if (maxgrow>0)
+      {
+      if (( single_line_field && (maxgrow < field->dcols)) ||
+          (!single_line_field && (maxgrow < field->drows)))
+        RETURN(E_BAD_ARGUMENT);
+      }
+    field->maxgrow = maxgrow;
+    field->status &= ~_MAY_GROW;
+    if (!(field->opts & O_STATIC))
+      {
+      if ((maxgrow==0) ||
+          ( single_line_field && (field->dcols < maxgrow)) ||
+          (!single_line_field && (field->drows < maxgrow)))
+        field->status |= _MAY_GROW;
+      }
     }
   RETURN(E_OK);
 }
-		  
+
 /* fld_max.c ends here */

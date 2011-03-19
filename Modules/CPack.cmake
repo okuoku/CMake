@@ -90,7 +90,7 @@
 #   welcomes users to this installer. Typically used in the graphical
 #   installers on Windows and Mac OS X.
 #
-#   CPACK_MONOLITHIC_INSTALL - Disables the component-based 
+#   CPACK_MONOLITHIC_INSTALL - Disables the component-based
 #   installation mechanism, so that all components are always installed.
 #
 #   CPACK_GENERATOR - List of CPack generators to use. If not
@@ -113,7 +113,7 @@
 #   enables stripping of all files (a list of files evaluates to TRUE
 #   in CMake, so this change is compatible).
 #
-# The following CPack variables are specific to source packages, and 
+# The following CPack variables are specific to source packages, and
 # will not affect binary packages:
 #
 #   CPACK_SOURCE_PACKAGE_FILE_NAME - The name of the source package,
@@ -268,7 +268,7 @@ MACRO(cpack_encode_variables)
   SET(_CPACK_OTHER_VARIABLES_)
   GET_CMAKE_PROPERTY(res VARIABLES)
   FOREACH(var ${res})
-    IF("xxx${var}" MATCHES "xxxCPACK")  
+    IF("xxx${var}" MATCHES "xxxCPACK")
       SET(_CPACK_OTHER_VARIABLES_
         "${_CPACK_OTHER_VARIABLES_}\nSET(${var} \"${${var}}\")")
       ENDIF("xxx${var}" MATCHES "xxxCPACK")
@@ -377,7 +377,7 @@ if(NOT CPACK_GENERATOR)
     option(CPACK_BINARY_NSIS "Enable to build NSIS packages" ON)
     option(CPACK_BINARY_ZIP  "Enable to build ZIP packages" OFF)
   endif(UNIX)
-  
+
   cpack_optional_append(CPACK_GENERATOR  CPACK_BINARY_BUNDLE       Bundle)
   cpack_optional_append(CPACK_GENERATOR  CPACK_BINARY_DRAGNDROP    DragNDrop)
   cpack_optional_append(CPACK_GENERATOR  CPACK_BINARY_PACKAGEMAKER PackageMaker)
@@ -391,7 +391,7 @@ if(NOT CPACK_GENERATOR)
   cpack_optional_append(CPACK_GENERATOR  CPACK_BINARY_TBZ2         TBZ2)
   cpack_optional_append(CPACK_GENERATOR  CPACK_BINARY_TZ           TZ)
   cpack_optional_append(CPACK_GENERATOR  CPACK_BINARY_ZIP          ZIP)
-  
+
 endif(NOT CPACK_GENERATOR)
 
 # Provide options to choose source generators
@@ -418,10 +418,10 @@ endif(NOT CPACK_SOURCE_GENERATOR)
 
 # mark the above options as advanced
 mark_as_advanced(CPACK_BINARY_CYGWIN CPACK_BINARY_PACKAGEMAKER CPACK_BINARY_OSXX11
-                 CPACK_BINARY_STGZ   CPACK_BINARY_TGZ          CPACK_BINARY_TBZ2 
-                 CPACK_BINARY_DEB    CPACK_BINARY_RPM          CPACK_BINARY_TZ     
+                 CPACK_BINARY_STGZ   CPACK_BINARY_TGZ          CPACK_BINARY_TBZ2
+                 CPACK_BINARY_DEB    CPACK_BINARY_RPM          CPACK_BINARY_TZ
                  CPACK_BINARY_NSIS CPACK_BINARY_ZIP CPACK_BINARY_BUNDLE
-                 CPACK_SOURCE_CYGWIN CPACK_SOURCE_TBZ2 CPACK_SOURCE_TGZ 
+                 CPACK_SOURCE_CYGWIN CPACK_SOURCE_TBZ2 CPACK_SOURCE_TGZ
                  CPACK_SOURCE_TZ CPACK_SOURCE_ZIP CPACK_BINARY_DRAGNDROP)
 
 # Set some other variables
@@ -436,11 +436,11 @@ endif()
 # if the user has set CPACK_NSIS_DISPLAY
 # explicitly, then use that as the default
 # value of CPACK_NSIS_PACKAGE_NAME  instead
-# of CPACK_PACKAGE_INSTALL_DIRECTORY 
+# of CPACK_PACKAGE_INSTALL_DIRECTORY
 cpack_set_if_not_set(CPACK_NSIS_DISPLAY_NAME "${CPACK_PACKAGE_INSTALL_DIRECTORY}")
 
 if(CPACK_NSIS_DISPLAY_NAME_SET)
-  string(REPLACE "\\" "\\\\" 
+  string(REPLACE "\\" "\\\\"
     _NSIS_DISPLAY_NAME_TMP  "${CPACK_NSIS_DISPLAY_NAME}")
   cpack_set_if_not_set(CPACK_NSIS_PACKAGE_NAME "${_NSIS_DISPLAY_NAME_TMP}")
 else()

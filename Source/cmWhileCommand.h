@@ -19,7 +19,7 @@
 /** \class cmWhileFunctionBlocker
  * \brief subclass of function blocker
  *
- * 
+ *
  */
 class cmWhileFunctionBlocker : public cmFunctionBlocker
 {
@@ -30,7 +30,7 @@ public:
                                  cmMakefile &mf,
                                  cmExecutionStatus &);
   virtual bool ShouldRemove(const cmListFileFunction& lff, cmMakefile &mf);
-  
+
   std::vector<cmListFileArgument> Args;
   std::vector<cmListFileFunction> Functions;
 private:
@@ -48,7 +48,7 @@ public:
   /**
    * This is a virtual constructor for the command.
    */
-  virtual cmCommand* Clone() 
+  virtual cmCommand* Clone()
     {
     return new cmWhileCommand;
     }
@@ -59,7 +59,7 @@ public:
    */
   virtual bool InvokeInitialPass(const std::vector<cmListFileArgument>& args,
                                  cmExecutionStatus &);
-    
+
   /**
    * This is called when the command is first encountered in
    * the CMakeLists.txt file.
@@ -80,11 +80,11 @@ public:
   /**
    * Succinct documentation.
    */
-  virtual const char* GetTerseDocumentation() 
+  virtual const char* GetTerseDocumentation()
     {
     return "Evaluate a group of commands while a condition is true";
     }
-  
+
   /**
    * More documentation.
    */
@@ -102,7 +102,7 @@ public:
       "is true. The condition is evaluated using the same logic as the "
       "if command.";
     }
-  
+
   cmTypeMacro(cmWhileCommand, cmCommand);
 };
 

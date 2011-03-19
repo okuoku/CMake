@@ -21,9 +21,9 @@ class cmVS10XMLParser : public cmXMLParser
   public:
   virtual void EndElement(const char* /* name */)
     {
-    } 
+    }
   virtual void CharacterDataHandler(const char* data, int length)
-    { 
+    {
       if(this->DoGUID )
         {
         this->GUID.assign(data+1, length-2);
@@ -40,7 +40,7 @@ class cmVS10XMLParser : public cmXMLParser
       if(strcmp("ProjectGUID", name) == 0 || strcmp("ProjectGuid", name) == 0)
         {
         this->DoGUID = true;
-        } 
+        }
     }
   int InitializeParser()
     {
@@ -50,7 +50,7 @@ class cmVS10XMLParser : public cmXMLParser
         {
         return ret;
         }
-      // visual studio projects have a strange encoding, but it is 
+      // visual studio projects have a strange encoding, but it is
       // really utf-8
       XML_SetEncoding(static_cast<XML_Parser>(this->Parser), "utf-8");
       return 1;
@@ -71,7 +71,7 @@ cmLocalVisualStudio10Generator::~cmLocalVisualStudio10Generator()
 
 void cmLocalVisualStudio10Generator::Generate()
 {
-  
+
   cmTargets &tgts = this->Makefile->GetTargets();
   // Create the regeneration custom rule.
   if(!this->Makefile->IsOn("CMAKE_SUPPRESS_REGENERATION"))
@@ -107,7 +107,7 @@ void cmLocalVisualStudio10Generator
                            const char* path)
 {
   cmVS10XMLParser parser;
-  parser.ParseFile(path); 
+  parser.ParseFile(path);
   std::string guidStoreName = name;
   guidStoreName += "_GUID_CMAKE";
   // save the GUID in the cache

@@ -15,7 +15,7 @@
 bool cmIncludeExternalMSProjectCommand
 ::InitialPass(std::vector<std::string> const& args, cmExecutionStatus &)
 {
-  if(args.size() < 2) 
+  if(args.size() < 2)
   {
   this->SetError("INCLUDE_EXTERNAL_MSPROJECT called with incorrect "
                  "number of arguments");
@@ -29,12 +29,12 @@ bool cmIncludeExternalMSProjectCommand
     cmSystemTools::ConvertToUnixSlashes(path);
 
     // Create a target instance for this utility.
-    cmTarget* target=this->Makefile->AddNewTarget(cmTarget::UTILITY, 
+    cmTarget* target=this->Makefile->AddNewTarget(cmTarget::UTILITY,
                                                   args[0].c_str());
     target->SetProperty("EXTERNAL_MSPROJECT", path.c_str());
-    target->SetProperty("EXCLUDE_FROM_ALL","FALSE"); 
+    target->SetProperty("EXCLUDE_FROM_ALL","FALSE");
     target->SetProperty("GENERATOR_FILE_NAME", args[0].c_str());
-    for (unsigned int i=2; i<args.size(); ++i) 
+    for (unsigned int i=2; i<args.size(); ++i)
       {
       target->AddUtility(args[i].c_str());
       }

@@ -14,13 +14,13 @@
 
 //----------------------------------------------------------------------------
 const char* cmXCodeObject::PBXTypeNames[] = {
-    "PBXGroup", "PBXBuildStyle", "PBXProject", "PBXHeadersBuildPhase", 
+    "PBXGroup", "PBXBuildStyle", "PBXProject", "PBXHeadersBuildPhase",
     "PBXSourcesBuildPhase", "PBXFrameworksBuildPhase", "PBXNativeTarget",
-    "PBXFileReference", "PBXBuildFile", "PBXContainerItemProxy", 
-    "PBXTargetDependency", "PBXShellScriptBuildPhase", 
+    "PBXFileReference", "PBXBuildFile", "PBXContainerItemProxy",
+    "PBXTargetDependency", "PBXShellScriptBuildPhase",
     "PBXResourcesBuildPhase", "PBXApplicationReference",
     "PBXExecutableFileReference", "PBXLibraryReference", "PBXToolTarget",
-    "PBXLibraryTarget", "PBXAggregateTarget", "XCBuildConfiguration", 
+    "PBXLibraryTarget", "PBXAggregateTarget", "XCBuildConfiguration",
     "XCConfigurationList",
     "PBXCopyFilesBuildPhase",
     "None"
@@ -39,7 +39,7 @@ cmXCodeObject::cmXCodeObject(PBXType ptype, Type type)
   this->PBXTargetDependencyValue = 0;
   this->Target = 0;
   this->Object =0;
-  
+
   this->IsA = ptype;
   if(type == OBJECT)
     {
@@ -51,7 +51,7 @@ cmXCodeObject::cmXCodeObject(PBXType ptype, Type type)
     }
   else
     {
-    this->Id = 
+    this->Id =
       "Temporary cmake object, should not be refered to in xcode file";
     }
   cmSystemTools::ReplaceString(this->Id, "0x", "");
@@ -90,7 +90,7 @@ void cmXCodeObject::Print(std::ostream& out)
 {
   std::string separator = "\n";
   int indentFactor = 1;
-  if(this->Version > 15 
+  if(this->Version > 15
      && (this->IsA == PBXFileReference || this->IsA == PBXBuildFile))
     {
     separator = " ";
@@ -110,12 +110,12 @@ void cmXCodeObject::Print(std::ostream& out)
   std::map<cmStdString, cmXCodeObject*>::iterator i;
   cmXCodeObject::Indent(3*indentFactor, out);
   out << "isa = " << PBXTypeNames[this->IsA]  << ";" << separator;
-  for(i = this->ObjectAttributes.begin(); 
+  for(i = this->ObjectAttributes.begin();
       i != this->ObjectAttributes.end(); ++i)
-    { 
+    {
     cmXCodeObject* object = i->second;
     if(i->first != "isa")
-      { 
+      {
       cmXCodeObject::Indent(3*indentFactor, out);
       }
     else
@@ -131,7 +131,7 @@ void cmXCodeObject::Print(std::ostream& out)
         out << i->second->List[k]->Id << " ";
         i->second->List[k]->PrintComment(out);
         out << "," << separator;
-        } 
+        }
       cmXCodeObject::Indent(3*indentFactor, out);
       out << ");" << separator;
       }
@@ -139,7 +139,7 @@ void cmXCodeObject::Print(std::ostream& out)
       {
       std::map<cmStdString, cmXCodeObject*>::iterator j;
       out << i->first << " = {" << separator;
-      for(j = object->ObjectAttributes.begin(); j != 
+      for(j = object->ObjectAttributes.begin(); j !=
             object->ObjectAttributes.end(); ++j)
         {
         cmXCodeObject::Indent(4 *indentFactor, out);
@@ -207,11 +207,11 @@ void cmXCodeObject::Print(std::ostream& out)
   cmXCodeObject::Indent(2*indentFactor, out);
   out << "};\n";
 }
-  
+
 //----------------------------------------------------------------------------
 void cmXCodeObject::PrintList(std::vector<cmXCodeObject*> const& objs,
                               std::ostream& out)
-{ 
+{
   cmXCodeObject::Indent(1, out);
   out << "objects = {\n";
   for(unsigned int i = 0; i < objs.size(); ++i)

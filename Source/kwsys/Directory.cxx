@@ -192,7 +192,7 @@ unsigned long Directory::GetNumberOfFilesInDirectory(const char* name)
 #include <dirent.h>
 
 /* There is a problem with the Portland compiler, large file
-support and glibc/Linux system headers: 
+support and glibc/Linux system headers:
 http://www.pgroup.com/userforum/viewtopic.php?
 p=1992&sid=f16167f51964f1a68fe5041b8eb213b6
 */
@@ -206,7 +206,7 @@ namespace KWSYS_NAMESPACE
 bool Directory::Load(const char* name)
 {
   this->Clear();
-   
+
   if (!name)
     {
     return 0;

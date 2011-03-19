@@ -1490,7 +1490,7 @@ void kwsysProcess_Kill(kwsysProcess* cp)
     /* Not Windows 9x.  Just terminate the children.  */
     for(i=0; i < cp->NumberOfCommands; ++i)
       {
-      kwsysProcessKillTree(cp->ProcessInformation[i].dwProcessId); 
+      kwsysProcessKillTree(cp->ProcessInformation[i].dwProcessId);
       // close the handle if we kill it
       kwsysProcessCleanupHandle(&cp->ProcessInformation[i].hThread);
       kwsysProcessCleanupHandle(&cp->ProcessInformation[i].hProcess);

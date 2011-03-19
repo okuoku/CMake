@@ -32,21 +32,21 @@ class cmDocumentation: public cmDocumentationEnums
 {
 public:
   cmDocumentation();
-  
+
   ~cmDocumentation();
   // High-level interface for standard documents:
-  
+
   /**
    * Check command line arguments for documentation options.  Returns
    * true if documentation options are found, and false otherwise.
    * When true is returned, PrintRequestedDocumentation should be
-   * called.  exitOpt can be used for things like cmake -E, so that 
+   * called.  exitOpt can be used for things like cmake -E, so that
    * all arguments after the -E are ignored and not searched for
    * help arguments.
    */
-  bool CheckOptions(int argc, const char* const* argv, 
+  bool CheckOptions(int argc, const char* const* argv,
                     const char* exitOpt =0);
-  
+
   /**
    * Print help requested on the command line.  Call after
    * CheckOptions returns true.  Returns true on success, and false
@@ -54,12 +54,12 @@ public:
    * command line cannot be written.
    */
   bool PrintRequestedDocumentation(std::ostream& os);
-  
+
   /** Print help of the given type.  */
   bool PrintDocumentation(Type ht, std::ostream& os, const char* docname=0);
 
   void SetShowGenerators(bool showGen) { this->ShowGenerators = showGen; }
-  
+
   /** Set the program name for standard document generation.  */
   void SetName(const char* name);
 
@@ -93,7 +93,7 @@ public:
    * sections will be generated.
    */
   void Print(Form f, std::ostream& os);
-  
+
   /**
    * Print documentation in the current form.  All previously added
    * sections will be generated.
@@ -109,24 +109,24 @@ public:
   void SetSeeAlsoList(const char *data[][3]);
 
   /** Clear all previously added sections of help.  */
-  void ClearSections();  
-  
+  void ClearSections();
+
   /** Set cmake root so we can find installed files */
   void SetCMakeRoot(const char* root)  { this->CMakeRoot = root;}
 
   /** Set CMAKE_MODULE_PATH so we can find additional cmake modules */
   void SetCMakeModulePath(const char* path)  { this->CMakeModulePath = path;}
-  
+
   static Form GetFormFromFilename(const std::string& filename);
 
 private:
   void SetForm(Form f);
   void SetDocName(const char* docname);
 
-  bool CreateSingleModule(const char* fname, 
+  bool CreateSingleModule(const char* fname,
                           const char* moduleName,
                           cmDocumentationSection &sec);
-  void CreateModuleDocsForDir(cmsys::Directory& dir, 
+  void CreateModuleDocsForDir(cmsys::Directory& dir,
                               cmDocumentationSection &moduleSection);
   bool CreateModulesSection();
   bool CreateCustomModulesSection();
@@ -166,7 +166,7 @@ private:
   std::string NameString;
   std::string DocName;
   std::map<std::string,cmDocumentationSection*> AllSections;
-  
+
   std::string SeeAlsoString;
   std::string CMakeRoot;
   std::string CMakeModulePath;

@@ -854,9 +854,9 @@ static void regoptail (char* p, const char* val) {
 
 
 ////////////////////////////////////////////////////////////////////////
-// 
+//
 //  find and friends
-// 
+//
 ////////////////////////////////////////////////////////////////////////
 
 
@@ -882,7 +882,7 @@ void         regdump ();
 static char* regprop ();
 #endif
 
-bool RegularExpression::find (kwsys_stl::string const& s) 
+bool RegularExpression::find (kwsys_stl::string const& s)
 {
   return find(s.c_str());
 }

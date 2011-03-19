@@ -17,7 +17,7 @@
 /** \class cmMarkAsAdvancedCommand
  * \brief MarkAsAdvanced a CMAKE variable
  *
- * cmMarkAsAdvancedCommand sets a variable to a value with expansion.  
+ * cmMarkAsAdvancedCommand sets a variable to a value with expansion.
  */
 class cmMarkAsAdvancedCommand : public cmCommand
 {
@@ -25,7 +25,7 @@ public:
   /**
    * This is a virtual constructor for the command.
    */
-  virtual cmCommand* Clone() 
+  virtual cmCommand* Clone()
     {
     return new cmMarkAsAdvancedCommand;
     }
@@ -41,15 +41,15 @@ public:
    * The name of the command as specified in CMakeList.txt.
    */
   virtual const char* GetName() {return "mark_as_advanced";}
-  
+
   /**
    * Succinct documentation.
    */
-  virtual const char* GetTerseDocumentation() 
+  virtual const char* GetTerseDocumentation()
     {
     return "Mark cmake cached variables as advanced.";
     }
-  
+
   /**
    * More documentation.
    */

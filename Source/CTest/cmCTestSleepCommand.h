@@ -25,11 +25,11 @@ class cmCTestSleepCommand : public cmCTestCommand
 public:
 
   cmCTestSleepCommand() {}
-  
+
   /**
    * This is a virtual constructor for the command.
    */
-  virtual cmCommand* Clone() 
+  virtual cmCommand* Clone()
     {
     cmCTestSleepCommand* ni = new cmCTestSleepCommand;
     ni->CTest = this->CTest;
@@ -52,11 +52,11 @@ public:
   /**
    * Succinct documentation.
    */
-  virtual const char* GetTerseDocumentation() 
+  virtual const char* GetTerseDocumentation()
     {
     return "sleeps for some amount of time";
     }
-  
+
   /**
    * More documentation.
    */

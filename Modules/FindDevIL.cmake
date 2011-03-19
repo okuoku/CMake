@@ -27,7 +27,7 @@
 
 INCLUDE(${CMAKE_CURRENT_LIST_DIR}/FindPackageHandleStandardArgs.cmake)
 
-FIND_PATH(IL_INCLUDE_DIR il.h 
+FIND_PATH(IL_INCLUDE_DIR il.h
   PATH_SUFFIXES include IL
   DOC "The path the the directory that contains il.h"
 )
@@ -58,6 +58,6 @@ FIND_LIBRARY(ILU_LIBRARIES
 
 #MESSAGE("ILU_LIBRARIES is ${ILU_LIBRARIES}")
 
-FIND_PACKAGE_HANDLE_STANDARD_ARGS(IL DEFAULT_MSG 
-                                  IL_LIBRARIES ILU_LIBRARIES 
+FIND_PACKAGE_HANDLE_STANDARD_ARGS(IL DEFAULT_MSG
+                                  IL_LIBRARIES ILU_LIBRARIES
                                   ILUT_LIBRARIES IL_INCLUDE_DIR)

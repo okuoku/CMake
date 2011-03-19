@@ -346,7 +346,7 @@ DynamicLoader::SymbolPointer DynamicLoader::GetSymbolAddress(
   DynamicLoader::LibraryHandle lib, const char* sym)
 {
   // Hack to cast pointer-to-data to pointer-to-function.
-  union 
+  union
   {
     void* pvoid;
     DynamicLoader::SymbolPointer psym;
@@ -462,7 +462,7 @@ DynamicLoader::SymbolPointer DynamicLoader::GetSymbolAddress(
   DynamicLoader::LibraryHandle lib, const char* sym)
 {
   // Hack to cast pointer-to-data to pointer-to-function.
-  union 
+  union
   {
     void* pvoid;
     DynamicLoader::SymbolPointer psym;

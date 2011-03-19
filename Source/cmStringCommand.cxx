@@ -26,7 +26,7 @@ bool cmStringCommand
     this->SetError("must be called with at least one argument.");
     return false;
     }
-  
+
   const std::string &subCommand = args[0];
   if(subCommand == "REGEX")
     {
@@ -95,11 +95,11 @@ bool cmStringCommand::HandleToUpperLowerCommand(
   std::string outvar = args[2];
   std::string output;
 
-  if (toUpper) 
+  if (toUpper)
     {
     output = cmSystemTools::UpperCase(args[1]);
-    } 
-  else 
+    }
+  else
     {
     output = cmSystemTools::LowerCase(args[1]);
     }
@@ -227,7 +227,7 @@ bool cmStringCommand::HandleRegexCommand(std::vector<std::string> const& args)
       }
     return this->RegexReplace(args);
     }
-  
+
   std::string e = "sub-command REGEX does not recognize mode "+mode;
   this->SetError(e.c_str());
   return false;
@@ -240,25 +240,25 @@ bool cmStringCommand::RegexMatch(std::vector<std::string> const& args)
   // <input> [<input>...])\n";
   std::string regex = args[2];
   std::string outvar = args[3];
-  
+
   // Concatenate all the last arguments together.
   std::string input = args[4];
   for(unsigned int i=5; i < args.size(); ++i)
     {
     input += args[i];
     }
-  
+
   this->ClearMatches(this->Makefile);
   // Compile the regular expression.
   cmsys::RegularExpression re;
   if(!re.compile(regex.c_str()))
     {
-    std::string e = 
+    std::string e =
       "sub-command REGEX, mode MATCH failed to compile regex \""+regex+"\".";
     this->SetError(e.c_str());
     return false;
     }
-  
+
   // Scan through the input for all matches.
   std::string output;
   if(re.find(input.c_str()))
@@ -268,7 +268,7 @@ bool cmStringCommand::RegexMatch(std::vector<std::string> const& args)
     std::string::size_type r = re.end();
     if(r-l == 0)
       {
-      std::string e = 
+      std::string e =
         "sub-command REGEX, mode MATCH regex \""+regex+
         "\" matched an empty string.";
       this->SetError(e.c_str());
@@ -276,7 +276,7 @@ bool cmStringCommand::RegexMatch(std::vector<std::string> const& args)
       }
     output = input.substr(l, r-l);
     }
-  
+
   // Store the output in the provided variable.
   this->Makefile->AddDefinition(outvar.c_str(), output.c_str());
   return true;
@@ -285,18 +285,18 @@ bool cmStringCommand::RegexMatch(std::vector<std::string> const& args)
 //----------------------------------------------------------------------------
 bool cmStringCommand::RegexMatchAll(std::vector<std::string> const& args)
 {
-  //"STRING(REGEX MATCHALL <regular_expression> <output variable> <input> 
+  //"STRING(REGEX MATCHALL <regular_expression> <output variable> <input>
   // [<input>...])\n";
   std::string regex = args[2];
   std::string outvar = args[3];
-  
+
   // Concatenate all the last arguments together.
   std::string input = args[4];
   for(unsigned int i=5; i < args.size(); ++i)
     {
     input += args[i];
     }
-  
+
   this->ClearMatches(this->Makefile);
   // Compile the regular expression.
   cmsys::RegularExpression re;
@@ -308,7 +308,7 @@ bool cmStringCommand::RegexMatchAll(std::vector<std::string> const& args)
     this->SetError(e.c_str());
     return false;
     }
-  
+
   // Scan through the input for all matches.
   std::string output;
   const char* p = input.c_str();
@@ -331,7 +331,7 @@ bool cmStringCommand::RegexMatchAll(std::vector<std::string> const& args)
     output += std::string(p+l, r-l);
     p += r;
     }
-  
+
   // Store the output in the provided variable.
   this->Makefile->AddDefinition(outvar.c_str(), output.c_str());
   return true;
@@ -340,12 +340,12 @@ bool cmStringCommand::RegexMatchAll(std::vector<std::string> const& args)
 //----------------------------------------------------------------------------
 bool cmStringCommand::RegexReplace(std::vector<std::string> const& args)
 {
-  //"STRING(REGEX REPLACE <regular_expression> <replace_expression> 
+  //"STRING(REGEX REPLACE <regular_expression> <replace_expression>
   // <output variable> <input> [<input>...])\n"
   std::string regex = args[2];
-  std::string replace = args[3];  
+  std::string replace = args[3];
   std::string outvar = args[4];
-  
+
   // Pull apart the replace expression to find the escaped [0-9] values.
   std::vector<RegexReplacement> replacement;
   std::string::size_type l = 0;
@@ -393,26 +393,26 @@ bool cmStringCommand::RegexReplace(std::vector<std::string> const& args)
       }
     l = r;
     }
-  
+
   // Concatenate all the last arguments together.
   std::string input = args[5];
   for(unsigned int i=6; i < args.size(); ++i)
     {
     input += args[i];
     }
-  
+
   this->ClearMatches(this->Makefile);
   // Compile the regular expression.
   cmsys::RegularExpression re;
   if(!re.compile(regex.c_str()))
     {
-    std::string e = 
+    std::string e =
       "sub-command REGEX, mode REPLACE failed to compile regex \""+
       regex+"\".";
     this->SetError(e.c_str());
     return false;
     }
-  
+
   // Scan through the input for all matches.
   std::string output;
   std::string::size_type base = 0;
@@ -421,10 +421,10 @@ bool cmStringCommand::RegexReplace(std::vector<std::string> const& args)
     this->StoreMatches(this->Makefile, re);
     std::string::size_type l2 = re.start();
     std::string::size_type r = re.end();
-    
+
     // Concatenate the part of the input that was not matched.
     output += input.substr(base, l2);
-    
+
     // Make sure the match had some text.
     if(r-l2 == 0)
       {
@@ -433,7 +433,7 @@ bool cmStringCommand::RegexReplace(std::vector<std::string> const& args)
       this->SetError(e.c_str());
       return false;
       }
-    
+
     // Concatenate the replacement for the match.
     for(unsigned int i=0; i < replacement.size(); ++i)
       {
@@ -465,14 +465,14 @@ bool cmStringCommand::RegexReplace(std::vector<std::string> const& args)
           }
         }
       }
-    
+
     // Move past the match.
     base += r;
     }
-  
+
   // Concatenate the text after the last match.
   output += input.substr(base, input.length()-base);
-  
+
   // Store the output in the provided variable.
   this->Makefile->AddDefinition(outvar.c_str(), output.c_str());
   return true;
@@ -585,9 +585,9 @@ bool cmStringCommand::HandleCompareCommand(std::vector<std::string> const&
       this->SetError(e.c_str());
       return false;
       }
-    
+
     const std::string& left = args[2];
-    const std::string& right = args[3];  
+    const std::string& right = args[3];
     const std::string& outvar = args[4];
     bool result;
     if(mode == "LESS")
@@ -615,7 +615,7 @@ bool cmStringCommand::HandleCompareCommand(std::vector<std::string> const&
       this->Makefile->AddDefinition(outvar.c_str(), "0");
       }
     return true;
-    }  
+    }
   std::string e = "sub-command COMPARE does not recognize mode "+mode;
   this->SetError(e.c_str());
   return false;
@@ -641,7 +641,7 @@ bool cmStringCommand::HandleReplaceCommand(std::vector<std::string> const&
     input += args[i];
     }
 
-  cmsys::SystemTools::ReplaceString(input, matchExpression.c_str(), 
+  cmsys::SystemTools::ReplaceString(input, matchExpression.c_str(),
                                     replaceExpression.c_str());
 
   this->Makefile->AddDefinition(variableName.c_str(), input.c_str());
@@ -649,7 +649,7 @@ bool cmStringCommand::HandleReplaceCommand(std::vector<std::string> const&
 }
 
 //----------------------------------------------------------------------------
-bool cmStringCommand::HandleSubstringCommand(std::vector<std::string> const& 
+bool cmStringCommand::HandleSubstringCommand(std::vector<std::string> const&
                                              args)
 {
   if(args.size() != 5)
@@ -683,7 +683,7 @@ bool cmStringCommand::HandleSubstringCommand(std::vector<std::string> const&
     return false;
     }
 
-  this->Makefile->AddDefinition(variableName.c_str(), 
+  this->Makefile->AddDefinition(variableName.c_str(),
                                 stringValue.substr(begin, end).c_str());
   return true;
 }
@@ -741,7 +741,7 @@ bool cmStringCommand::HandleStripCommand(
 
   size_t outLength = 0;
 
-  // if the input string didn't contain any non-space characters, return 
+  // if the input string didn't contain any non-space characters, return
   // an empty string
   if (startPos > inStringLength)
     {

@@ -17,7 +17,7 @@
 class cmGetDirectoryPropertyCommand : public cmCommand
 {
 public:
-  virtual cmCommand* Clone() 
+  virtual cmCommand* Clone()
     {
       return new cmGetDirectoryPropertyCommand;
     }
@@ -42,11 +42,11 @@ public:
   /**
    * Succinct documentation.
    */
-  virtual const char* GetTerseDocumentation() 
+  virtual const char* GetTerseDocumentation()
     {
     return "Get a property of DIRECTORY scope.";
     }
-  
+
   /**
    * Longer documentation.
    */
@@ -69,7 +69,7 @@ public:
         "\n"
         "See also the more general get_property() command.";
     }
-  
+
   cmTypeMacro(cmGetDirectoryPropertyCommand, cmCommand);
 };
 

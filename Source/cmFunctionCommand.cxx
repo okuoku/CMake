@@ -54,7 +54,7 @@ public:
    * The name of the command as specified in CMakeList.txt.
    */
   virtual const char* GetName() { return this->Args[0].c_str(); }
-  
+
   /**
    * Succinct documentation.
    */
@@ -120,15 +120,15 @@ bool cmFunctionHelperCommand::InvokeInitialPass
     {
     cmOStringStream tmpStream;
     tmpStream << "ARGV" << t;
-    this->Makefile->AddDefinition(tmpStream.str().c_str(), 
+    this->Makefile->AddDefinition(tmpStream.str().c_str(),
                                   expandedArgs[t].c_str());
     this->Makefile->MarkVariableAsUsed(tmpStream.str().c_str());
     }
-  
+
   // define the formal arguments
   for (unsigned int j = 1; j < this->Args.size(); ++j)
     {
-    this->Makefile->AddDefinition(this->Args[j].c_str(), 
+    this->Makefile->AddDefinition(this->Args[j].c_str(),
                                   expandedArgs[j-1].c_str());
     }
 
@@ -197,7 +197,7 @@ IsFunctionBlocked(const cmListFileFunction& lff, cmMakefile &mf,
   else if(!cmSystemTools::Strucmp(lff.Name.c_str(),"endfunction"))
     {
     // if this is the endfunction for this function then execute
-    if (!this->Depth) 
+    if (!this->Depth)
       {
       std::string name = this->Args[0];
       std::vector<std::string>::size_type cc;
@@ -213,20 +213,20 @@ IsFunctionBlocked(const cmListFileFunction& lff, cmMakefile &mf,
       f->Args = this->Args;
       f->Functions = this->Functions;
       mf.RecordPolicies(f->Policies);
-      
+
       // Set the FilePath on the arguments to match the function since it is
       // not stored and the original values may be freed
       for (unsigned int i = 0; i < f->Functions.size(); ++i)
         {
         for (unsigned int j = 0; j < f->Functions[i].Arguments.size(); ++j)
           {
-          f->Functions[i].Arguments[j].FilePath = 
+          f->Functions[i].Arguments[j].FilePath =
             f->Functions[i].FilePath.c_str();
           }
         }
 
       std::string newName = "_" + this->Args[0];
-      mf.GetCMakeInstance()->RenameCommand(this->Args[0].c_str(), 
+      mf.GetCMakeInstance()->RenameCommand(this->Args[0].c_str(),
                                            newName.c_str());
       mf.AddCommand(f);
 
@@ -254,7 +254,7 @@ ShouldRemove(const cmListFileFunction& lff, cmMakefile &mf)
   if(!cmSystemTools::Strucmp(lff.Name.c_str(),"endfunction"))
     {
     std::vector<std::string> expandedArguments;
-    mf.ExpandArguments(lff.Arguments, expandedArguments); 
+    mf.ExpandArguments(lff.Arguments, expandedArguments);
     // if the endfunction has arguments then make sure
     // they match the ones in the openeing function command
     if ((expandedArguments.empty() ||
@@ -280,7 +280,7 @@ bool cmFunctionCommand
   cmFunctionFunctionBlocker *f = new cmFunctionFunctionBlocker();
   for(std::vector<std::string>::const_iterator j = args.begin();
       j != args.end(); ++j)
-    {   
+    {
     f->Args.push_back(*j);
     }
   this->Makefile->AddFunctionBlocker(f);

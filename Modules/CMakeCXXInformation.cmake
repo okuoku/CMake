@@ -69,7 +69,7 @@ ENDIF (NOT _INCLUDED_FILE)
 
 
 # This should be included before the _INIT variables are
-# used to initialize the cache.  Since the rule variables 
+# used to initialize the cache.  Since the rule variables
 # have if blocks on them, users can still define them here.
 # But, it should still be after the platform file so changes can
 # be made to those values.
@@ -109,7 +109,7 @@ IF(NOT DEFINED CMAKE_SHARED_LIBRARY_LINK_CXX_FLAGS)
 ENDIF(NOT DEFINED CMAKE_SHARED_LIBRARY_LINK_CXX_FLAGS)
 
 IF(NOT CMAKE_SHARED_LIBRARY_RUNTIME_CXX_FLAG)
-  SET(CMAKE_SHARED_LIBRARY_RUNTIME_CXX_FLAG ${CMAKE_SHARED_LIBRARY_RUNTIME_C_FLAG}) 
+  SET(CMAKE_SHARED_LIBRARY_RUNTIME_CXX_FLAG ${CMAKE_SHARED_LIBRARY_RUNTIME_C_FLAG})
 ENDIF(NOT CMAKE_SHARED_LIBRARY_RUNTIME_CXX_FLAG)
 
 IF(NOT CMAKE_SHARED_LIBRARY_RUNTIME_CXX_FLAG_SEP)
@@ -178,7 +178,7 @@ ENDFOREACH(type)
 # use _INIT variables so that this only happens the first time
 # and you can set these flags in the cmake cache
 SET(CMAKE_CXX_FLAGS_INIT "$ENV{CXXFLAGS} ${CMAKE_CXX_FLAGS_INIT}")
-# avoid just having a space as the initial value for the cache 
+# avoid just having a space as the initial value for the cache
 IF(CMAKE_CXX_FLAGS_INIT STREQUAL " ")
   SET(CMAKE_CXX_FLAGS_INIT)
 ENDIF(CMAKE_CXX_FLAGS_INIT STREQUAL " ")
@@ -221,13 +221,13 @@ INCLUDE(CMakeCommonLanguageInclude)
 # <LINK_FLAGS>
 
 # CXX compiler information
-# <CMAKE_CXX_COMPILER>  
+# <CMAKE_CXX_COMPILER>
 # <CMAKE_SHARED_LIBRARY_CREATE_CXX_FLAGS>
 # <CMAKE_CXX_SHARED_MODULE_CREATE_FLAGS>
 # <CMAKE_CXX_LINK_FLAGS>
 
 # Static library tools
-# <CMAKE_AR> 
+# <CMAKE_AR>
 # <CMAKE_RANLIB>
 
 
@@ -268,7 +268,7 @@ ENDIF(NOT CMAKE_CXX_LINK_EXECUTABLE)
 
 MARK_AS_ADVANCED(
 CMAKE_BUILD_TOOL
-CMAKE_VERBOSE_MAKEFILE 
+CMAKE_VERBOSE_MAKEFILE
 CMAKE_CXX_FLAGS
 CMAKE_CXX_FLAGS_RELEASE
 CMAKE_CXX_FLAGS_RELWITHDEBINFO

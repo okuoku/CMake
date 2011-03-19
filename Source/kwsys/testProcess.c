@@ -91,7 +91,7 @@ int test4(int argc, const char* argv[])
 #endif
   (void)argc; (void)argv;
   fprintf(stdout, "Output before crash on stdout from crash test.\n");
-  fprintf(stderr, "Output before crash on stderr from crash test.\n");  
+  fprintf(stderr, "Output before crash on stderr from crash test.\n");
   fflush(stdout);
   fflush(stderr);
 #if defined(__clang__)
@@ -328,7 +328,7 @@ int runChild2(kwsysProcess* kp,
       printf("Error in administrating child process: [%s]\n",
              kwsysProcess_GetErrorString(kp)); break;
     };
-  
+
   if(result)
     {
     if(exception != kwsysProcess_GetExitException(kp))
@@ -344,7 +344,7 @@ int runChild2(kwsysProcess* kp,
               value, kwsysProcess_GetExitValue(kp));
       }
     }
-  
+
   if(kwsysProcess_GetState(kp) != state)
     {
     fprintf(stderr, "Mismatch in state.  "

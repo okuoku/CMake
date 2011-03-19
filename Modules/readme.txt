@@ -57,7 +57,7 @@ For example:
 # - This is a cool module
 # This module does really cool stuff.
 # It can do even more than you think.
-# 
+#
 # It even needs to paragraphs to tell you about it.
 # And it defines the following variables:
 #  VAR_COOL - this is great isn't it?
@@ -129,7 +129,7 @@ If neither the QUIET nor REQUIRED options are given then the
 FindXXX.cmake module should look for the package and complain without
 error if the module is not found.
 
-To get this behaviour you can use the FIND_PACKAGE_HANDLE_STANDARD_ARGS() 
+To get this behaviour you can use the FIND_PACKAGE_HANDLE_STANDARD_ARGS()
 macro, as an example see FindJPEG.cmake.
 
 For internal implementation, it's a generally accepted convention that variables starting with

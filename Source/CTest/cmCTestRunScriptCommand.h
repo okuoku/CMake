@@ -25,11 +25,11 @@ class cmCTestRunScriptCommand : public cmCTestCommand
 public:
 
   cmCTestRunScriptCommand() {}
-  
+
   /**
    * This is a virtual constructor for the command.
    */
-  virtual cmCommand* Clone() 
+  virtual cmCommand* Clone()
     {
     cmCTestRunScriptCommand* ni = new cmCTestRunScriptCommand;
     ni->CTest = this->CTest;
@@ -52,11 +52,11 @@ public:
   /**
    * Succinct documentation.
    */
-  virtual const char* GetTerseDocumentation() 
+  virtual const char* GetTerseDocumentation()
     {
     return "runs a ctest -S script";
     }
-  
+
   /**
    * More documentation.
    */

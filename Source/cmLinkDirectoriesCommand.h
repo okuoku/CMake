@@ -18,8 +18,8 @@
  * \brief Define a list of directories containing files to link.
  *
  * cmLinkDirectoriesCommand is used to specify a list
- * of directories containing files to link into executable(s). 
- * Note that the command supports the use of CMake built-in variables 
+ * of directories containing files to link into executable(s).
+ * Note that the command supports the use of CMake built-in variables
  * such as CMAKE_BINARY_DIR and CMAKE_SOURCE_DIR.
  */
 class cmLinkDirectoriesCommand : public cmCommand
@@ -28,7 +28,7 @@ public:
   /**
    * This is a virtual constructor for the command.
    */
-  virtual cmCommand* Clone() 
+  virtual cmCommand* Clone()
     {
     return new cmLinkDirectoriesCommand;
     }
@@ -48,11 +48,11 @@ public:
   /**
    * Succinct documentation.
    */
-  virtual const char* GetTerseDocumentation() 
+  virtual const char* GetTerseDocumentation()
     {
     return "Specify directories in which the linker will look for libraries.";
     }
-  
+
   /**
    * More documentation.
    */
@@ -68,7 +68,7 @@ public:
       "current source directory)."
       ;
     }
-  
+
   cmTypeMacro(cmLinkDirectoriesCommand, cmCommand);
 private:
   void AddLinkDir(std::string const& dir);

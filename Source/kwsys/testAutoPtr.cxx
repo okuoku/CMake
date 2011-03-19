@@ -12,7 +12,7 @@
 #ifdef __BORLANDC__
 # pragma warn -8027 /* 'for' not inlined.  */
 # pragma warn -8026 /* exception not inlined.  */
-#endif 
+#endif
 #include "kwsysPrivate.h"
 #include KWSYS_HEADER(auto_ptr.hxx)
 // Work-around CMake dependency scanning limitation.  This must

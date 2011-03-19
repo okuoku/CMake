@@ -68,9 +68,9 @@ chtype field_ ## name (const FIELD * field)\
 }
 
 /*---------------------------------------------------------------------------
-|   Facility      :  libnform  
+|   Facility      :  libnform
 |   Function      :  int set_field_fore(FIELD *field, chtype attr)
-|   
+|
 |   Description   :  Sets the foreground of the field used to display the
 |                    field contents.
 |
@@ -81,9 +81,9 @@ chtype field_ ## name (const FIELD * field)\
 GEN_FIELD_ATTR_SET_FCT( fore )
 
 /*---------------------------------------------------------------------------
-|   Facility      :  libnform  
+|   Facility      :  libnform
 |   Function      :  chtype field_fore(const FIELD *)
-|   
+|
 |   Description   :  Retrieve fields foreground attribute
 |
 |   Return Values :  The foreground attribute
@@ -91,9 +91,9 @@ GEN_FIELD_ATTR_SET_FCT( fore )
 GEN_FIELD_ATTR_GET_FCT( fore )
 
 /*---------------------------------------------------------------------------
-|   Facility      :  libnform  
+|   Facility      :  libnform
 |   Function      :  int set_field_back(FIELD *field, chtype attr)
-|   
+|
 |   Description   :  Sets the background of the field used to display the
 |                    fields extend.
 |
@@ -105,8 +105,8 @@ GEN_FIELD_ATTR_SET_FCT( back )
 
 /*---------------------------------------------------------------------------
 |   Facility      :  libnform
-|   Function      :  chtype field_back(const 
-|   
+|   Function      :  chtype field_back(const
+|
 |   Description   :  Retrieve fields background attribute
 |
 |   Return Values :  The background attribute

@@ -30,7 +30,7 @@ public:
   /**
    * This is a virtual constructor for the command.
    */
-  virtual cmCommand* Clone() 
+  virtual cmCommand* Clone()
     {
     return new cmStringCommand;
     }
@@ -55,11 +55,11 @@ public:
   /**
    * Succinct documentation.
    */
-  virtual const char* GetTerseDocumentation() 
+  virtual const char* GetTerseDocumentation()
     {
     return "String operations.";
     }
-  
+
   /**
    * More documentation.
    */
@@ -139,7 +139,7 @@ public:
       "             by all regular expression-related commands, including \n"
       "             e.g. if( MATCHES ), in the variables CMAKE_MATCH_(0..9).";
     }
-  
+
   cmTypeMacro(cmStringCommand, cmCommand);
   static void ClearMatches(cmMakefile* mf);
   static void StoreMatches(cmMakefile* mf, cmsys::RegularExpression& re);

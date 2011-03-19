@@ -34,9 +34,9 @@
 MODULE_ID("$Id$")
 
 /*---------------------------------------------------------------------------
-|   Facility      :  libnform  
+|   Facility      :  libnform
 |   Function      :  int set_current_field(FORM  * form,FIELD * field)
-|   
+|
 |   Description   :  Set the current field of the form to the specified one.
 |
 |   Return Values :  E_OK              - success
@@ -58,45 +58,45 @@ int set_current_field(FORM  * form, FIELD * field)
 
   if (!(form->status & _POSTED))
     {
-      form->current = field;
-      form->curpage = field->page;
-  }
+    form->current = field;
+    form->curpage = field->page;
+    }
   else
     {
-      if (form->status & _IN_DRIVER) 
-	err = E_BAD_STATE;
-      else
-	{
-	  if (form->current != field)
-	    {
-	      if (!_nc_Internal_Validation(form)) 
-	       err = E_INVALID_FIELD;
-	      else
-		{
-		  Call_Hook(form,fieldterm);
-		  if (field->page != form->curpage)
-		    {
-		      Call_Hook(form,formterm);
-		      err = _nc_Set_Form_Page(form,field->page,field);
-		      Call_Hook(form,forminit);
-		    } 
-		  else 
-		    {
-		      err = _nc_Set_Current_Field(form,field);
-		    }
-		  Call_Hook(form,fieldinit);
-		  _nc_Refresh_Current_Field(form);
-		}
-	    }
-	}
+    if (form->status & _IN_DRIVER)
+      err = E_BAD_STATE;
+    else
+      {
+      if (form->current != field)
+        {
+        if (!_nc_Internal_Validation(form))
+          err = E_INVALID_FIELD;
+        else
+          {
+          Call_Hook(form,fieldterm);
+          if (field->page != form->curpage)
+            {
+            Call_Hook(form,formterm);
+            err = _nc_Set_Form_Page(form,field->page,field);
+            Call_Hook(form,forminit);
+            }
+          else
+            {
+            err = _nc_Set_Current_Field(form,field);
+            }
+          Call_Hook(form,fieldinit);
+          _nc_Refresh_Current_Field(form);
+          }
+        }
+      }
     }
   RETURN(err);
 }
 
 /*---------------------------------------------------------------------------
-|   Facility      :  libnform  
+|   Facility      :  libnform
 |   Function      :  FIELD *current_field(const FORM * form)
-|   
+|
 |   Description   :  Return the current field.
 |
 |   Return Values :  Pointer to the current field.
@@ -107,9 +107,9 @@ FIELD *current_field(const FORM * form)
 }
 
 /*---------------------------------------------------------------------------
-|   Facility      :  libnform  
+|   Facility      :  libnform
 |   Function      :  int field_index(const FIELD * field)
-|   
+|
 |   Description   :  Return the index of the field in the field-array of
 |                    the form.
 |

@@ -19,7 +19,7 @@
 /** \class cmForEachFunctionBlocker
  * \brief subclass of function blocker
  *
- * 
+ *
  */
 class cmForEachFunctionBlocker : public cmFunctionBlocker
 {
@@ -30,7 +30,7 @@ public:
                                  cmMakefile &mf,
                                  cmExecutionStatus &);
   virtual bool ShouldRemove(const cmListFileFunction& lff, cmMakefile &mf);
-  
+
   std::vector<std::string> Args;
   std::vector<cmListFileFunction> Functions;
 private:
@@ -48,7 +48,7 @@ public:
   /**
    * This is a virtual constructor for the command.
    */
-  virtual cmCommand* Clone() 
+  virtual cmCommand* Clone()
     {
     return new cmForEachCommand;
     }
@@ -73,11 +73,11 @@ public:
   /**
    * Succinct documentation.
    */
-  virtual const char* GetTerseDocumentation() 
+  virtual const char* GetTerseDocumentation()
     {
     return "Evaluate a group of commands for each value in a list.";
     }
-  
+
   /**
    * More documentation.
    */
@@ -115,7 +115,7 @@ public:
       "following it in the iteration."
       ;
     }
-  
+
   cmTypeMacro(cmForEachCommand, cmCommand);
 private:
   bool HandleInMode(std::vector<std::string> const& args);

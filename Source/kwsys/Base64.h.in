@@ -92,7 +92,7 @@ kwsysEXPORT int kwsysBase64_Decode3(const unsigned char *src,
  * much decoded data to expect (of course, the buffer must be large
  * enough).
  */
-kwsysEXPORT unsigned long kwsysBase64_Decode(const unsigned char *input, 
+kwsysEXPORT unsigned long kwsysBase64_Decode(const unsigned char *input,
                                              unsigned long length,
                                              unsigned char *output,
                                              unsigned long max_input_length);

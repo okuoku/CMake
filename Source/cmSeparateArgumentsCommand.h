@@ -17,7 +17,7 @@
 /** \class cmSeparateArgumentsCommand
  * \brief SeparateArguments a CMAKE variable
  *
- * cmSeparateArgumentsCommand sets a variable to a value with expansion.  
+ * cmSeparateArgumentsCommand sets a variable to a value with expansion.
  */
 class cmSeparateArgumentsCommand : public cmCommand
 {
@@ -25,7 +25,7 @@ public:
   /**
    * This is a virtual constructor for the command.
    */
-  virtual cmCommand* Clone() 
+  virtual cmCommand* Clone()
     {
     return new cmSeparateArgumentsCommand;
     }
@@ -46,16 +46,16 @@ public:
    * The name of the command as specified in CMakeList.txt.
    */
   virtual const char* GetName() {return "separate_arguments";}
-  
+
   /**
    * Succinct documentation.
    */
-  virtual const char* GetTerseDocumentation() 
+  virtual const char* GetTerseDocumentation()
     {
-    return 
+    return
       "Parse space-separated arguments into a semicolon-separated list.";
     }
-  
+
   /**
    * More documentation.
    */
@@ -83,7 +83,7 @@ public:
       "All spaces are replaced with ';'.  This helps with generating "
       "command lines.";
     }
-  
+
   cmTypeMacro(cmSeparateArgumentsCommand, cmCommand);
 };
 

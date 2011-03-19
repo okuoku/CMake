@@ -26,7 +26,7 @@ public:
   /**
    * This is a virtual constructor for the command.
    */
-  virtual cmCommand* Clone() 
+  virtual cmCommand* Clone()
     {
     return new cmAddLibraryCommand;
     }
@@ -46,11 +46,11 @@ public:
   /**
    * Succinct documentation.
    */
-  virtual const char* GetTerseDocumentation() 
+  virtual const char* GetTerseDocumentation()
     {
     return "Add a library to the project using the specified source files.";
     }
-  
+
   /**
    * More documentation.
    */
@@ -113,7 +113,7 @@ public:
       "See documentation of the IMPORTED_* properties for more information."
       ;
     }
-  
+
   cmTypeMacro(cmAddLibraryCommand, cmCommand);
 };
 

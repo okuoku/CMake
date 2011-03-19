@@ -17,7 +17,7 @@
 /** \class cmSiteNameCommand
  * \brief SiteName a CMAKE variable
  *
- * cmSiteNameCommand sets a variable to a value with expansion.  
+ * cmSiteNameCommand sets a variable to a value with expansion.
  */
 class cmSiteNameCommand : public cmCommand
 {
@@ -25,7 +25,7 @@ public:
   /**
    * This is a virtual constructor for the command.
    */
-  virtual cmCommand* Clone() 
+  virtual cmCommand* Clone()
     {
     return new cmSiteNameCommand;
     }
@@ -46,15 +46,15 @@ public:
    * The name of the command as specified in CMakeList.txt.
    */
   virtual const char* GetName() {return "site_name";}
-  
+
   /**
    * Succinct documentation.
    */
-  virtual const char* GetTerseDocumentation() 
+  virtual const char* GetTerseDocumentation()
     {
     return "Set the given variable to the name of the computer.";
     }
-  
+
   /**
    * More documentation.
    */
@@ -63,7 +63,7 @@ public:
     return
       "  site_name(variable)\n";
     }
-  
+
   cmTypeMacro(cmSiteNameCommand, cmCommand);
 };
 

@@ -12,7 +12,7 @@
 # (To distribute this file outside of CMake, substitute the full
 #  License text for the above reference.)
 
-SET(CMAKE_SHARED_LIBRARY_C_FLAGS "")            # -pic 
+SET(CMAKE_SHARED_LIBRARY_C_FLAGS "")            # -pic
 SET(CMAKE_SHARED_LIBRARY_CREATE_C_FLAGS "-shared")       # -shared
 SET(CMAKE_SHARED_LIBRARY_LINK_C_FLAGS "")         # +s, flag for exe link to use shared lib
 SET(CMAKE_SHARED_LIBRARY_RUNTIME_C_FLAG "")       # -rpath
@@ -40,7 +40,7 @@ SET_PROPERTY(GLOBAL PROPERTY TARGET_SUPPORTS_SHARED_LIBS TRUE)
 SET (CMAKE_SKIP_RPATH "NO" CACHE BOOL
      "If set, runtime paths are not added when using shared libraries.")
 
-SET(CMAKE_VERBOSE_MAKEFILE FALSE CACHE BOOL "If this value is on, makefiles will be generated without the .SILENT directive, and all commands will be echoed to the console during the make.  This is useful for debugging only. With Visual Studio IDE projects all commands are done without /nologo.") 
+SET(CMAKE_VERBOSE_MAKEFILE FALSE CACHE BOOL "If this value is on, makefiles will be generated without the .SILENT directive, and all commands will be echoed to the console during the make.  This is useful for debugging only. With Visual Studio IDE projects all commands are done without /nologo.")
 
 IF(CMAKE_GENERATOR MATCHES "Makefiles")
   SET(CMAKE_COLOR_MAKEFILE ON CACHE BOOL

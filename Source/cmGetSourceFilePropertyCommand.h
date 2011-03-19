@@ -17,7 +17,7 @@
 class cmGetSourceFilePropertyCommand : public cmCommand
 {
 public:
-  virtual cmCommand* Clone() 
+  virtual cmCommand* Clone()
     {
       return new cmGetSourceFilePropertyCommand;
     }
@@ -37,11 +37,11 @@ public:
   /**
    * Succinct documentation.
    */
-  virtual const char* GetTerseDocumentation() 
+  virtual const char* GetTerseDocumentation()
     {
     return "Get a property for a source file.";
     }
-  
+
   /**
    * Longer documentation.
    */
@@ -57,7 +57,7 @@ public:
         "\n"
         "See also the more general get_property() command.";
     }
-  
+
   cmTypeMacro(cmGetSourceFilePropertyCommand, cmCommand);
 };
 

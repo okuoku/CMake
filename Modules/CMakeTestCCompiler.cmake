@@ -33,9 +33,9 @@ IF(NOT CMAKE_C_COMPILER_WORKS)
     "int main(int argc, char* argv[])\n"
     "#endif\n"
     "{ (void)argv; return argc-1;}\n")
-  TRY_COMPILE(CMAKE_C_COMPILER_WORKS ${CMAKE_BINARY_DIR} 
+  TRY_COMPILE(CMAKE_C_COMPILER_WORKS ${CMAKE_BINARY_DIR}
     ${CMAKE_BINARY_DIR}${CMAKE_FILES_DIRECTORY}/CMakeTmp/testCCompiler.c
-    OUTPUT_VARIABLE OUTPUT) 
+    OUTPUT_VARIABLE OUTPUT)
   SET(C_TEST_WAS_RUN 1)
 ENDIF(NOT CMAKE_C_COMPILER_WORKS)
 
@@ -58,7 +58,7 @@ ELSE(NOT CMAKE_C_COMPILER_WORKS)
     PrintTestCompilerStatus("C" " -- works")
     FILE(APPEND ${CMAKE_BINARY_DIR}${CMAKE_FILES_DIRECTORY}/CMakeOutput.log
       "Determining if the C compiler works passed with "
-      "the following output:\n${OUTPUT}\n\n") 
+      "the following output:\n${OUTPUT}\n\n")
   ENDIF(C_TEST_WAS_RUN)
   SET(CMAKE_C_COMPILER_WORKS 1 CACHE INTERNAL "")
 

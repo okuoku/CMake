@@ -28,7 +28,7 @@ public:
   /**
    * This is a virtual constructor for the command.
    */
-  virtual cmCommand* Clone() 
+  virtual cmCommand* Clone()
     {
     return new cmProjectCommand;
     }
@@ -39,7 +39,7 @@ public:
    */
   virtual bool InitialPass(std::vector<std::string> const& args,
                            cmExecutionStatus &status);
-  
+
   /**
    * The name of the command as specified in CMakeList.txt.
    */
@@ -48,11 +48,11 @@ public:
   /**
    * Succinct documentation.
    */
-  virtual const char* GetTerseDocumentation() 
+  virtual const char* GetTerseDocumentation()
     {
     return "Set a name for the entire project.";
     }
-  
+
   /**
    * More documentation.
    */
@@ -70,7 +70,7 @@ public:
       "the languages you want to support, e.g. C.  By using the special "
       "language \"NONE\" all checks for any language can be disabled.";
     }
-  
+
   cmTypeMacro(cmProjectCommand, cmCommand);
 };
 

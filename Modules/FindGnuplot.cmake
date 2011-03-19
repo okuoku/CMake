@@ -21,7 +21,7 @@
 INCLUDE(FindCygwin)
 
 FIND_PROGRAM(GNUPLOT_EXECUTABLE
-  NAMES 
+  NAMES
   gnuplot
   pgnuplot
   wgnupl32
@@ -32,7 +32,7 @@ FIND_PROGRAM(GNUPLOT_EXECUTABLE
 # for compatibility
 SET(GNUPLOT ${GNUPLOT_EXECUTABLE})
 
-# handle the QUIETLY and REQUIRED arguments and set GNUPLOT_FOUND to TRUE if 
+# handle the QUIETLY and REQUIRED arguments and set GNUPLOT_FOUND to TRUE if
 # all listed variables are TRUE
 INCLUDE(${CMAKE_CURRENT_LIST_DIR}/FindPackageHandleStandardArgs.cmake)
 FIND_PACKAGE_HANDLE_STANDARD_ARGS(Gnuplot DEFAULT_MSG GNUPLOT_EXECUTABLE)

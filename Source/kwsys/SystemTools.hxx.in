@@ -68,7 +68,7 @@ public:
 };
 
 // This instance will show up in any translation unit that uses
-// SystemTools. It will make sure SystemTools is initialized 
+// SystemTools. It will make sure SystemTools is initialized
 // before it is used and is the last static object destroyed.
 static SystemToolsManager SystemToolsManagerInstance;
 
@@ -92,7 +92,7 @@ public:
    * identifiers that the standard reserves (_[A-Z].* and __.*).
    */
   static kwsys_stl::string MakeCindentifier(const char* s);
-  
+
   /**
    * Replace replace all occurences of the string in the source string.
    */
@@ -105,34 +105,34 @@ public:
    * all other are lowercased).
    */
   static kwsys_stl::string Capitalized(const kwsys_stl::string&);
-  
+
   /**
    * Return a 'capitalized words' string (i.e the first letter of each word
    * is uppercased all other are left untouched though).
    */
   static kwsys_stl::string CapitalizedWords(const kwsys_stl::string&);
-  
+
   /**
    * Return a 'uncapitalized words' string (i.e the first letter of each word
    * is lowercased all other are left untouched though).
    */
   static kwsys_stl::string UnCapitalizedWords(const kwsys_stl::string&);
-  
+
   /**
    * Return a lower case string
    */
   static kwsys_stl::string LowerCase(const kwsys_stl::string&);
-  
+
   /**
    * Return a lower case string
    */
   static kwsys_stl::string UpperCase(const kwsys_stl::string&);
-  
+
   /**
    * Count char in string
    */
   static size_t CountChar(const char* str, char c);
-  
+
   /**
    * Remove some characters from a string.
    * Return a pointer to the new resulting string (allocated with 'new')
@@ -144,13 +144,13 @@ public:
    * Return a pointer to the new resulting string (allocated with 'new')
    */
   static char* RemoveCharsButUpperHex(const char* str);
-  
+
   /**
    * Replace some characters by another character in a string (in-place)
    * Return a pointer to string
    */
   static char* ReplaceChars(char* str, const char *toreplace,char replacement);
-  
+
   /**
    * Returns true if str1 starts (respectively ends) with str2
    */
@@ -161,33 +161,33 @@ public:
    * Returns a pointer to the last occurence of str2 in str1
    */
   static const char* FindLastString(const char* str1, const char* str2);
-  
+
   /**
    * Make a duplicate of the string similar to the strdup C function
    * but use new to create the 'new' string, so one can use
    * 'delete' to remove it. Returns 0 if the input is empty.
    */
   static char* DuplicateString(const char* str);
-  
+
   /**
    * Return the string cropped to a given length by removing chars in the
    * center of the string and replacing them with an ellipsis (...)
    */
   static kwsys_stl::string CropString(const kwsys_stl::string&,size_t max_len);
-  
+
   /** split a path by separator into an array of strings, default is /.
       If isPath is true then the string is treated like a path and if
       s starts with a / then the first element of the returned array will
       be /, so /foo/bar will be [/, foo, bar]
-  */  
-  static kwsys_stl::vector<String> SplitString(const char* s, char separator = '/', 
+  */
+  static kwsys_stl::vector<String> SplitString(const char* s, char separator = '/',
                                                bool isPath = false);
   /**
    * Perform a case-independent string comparison
    */
   static int Strucmp(const char *s1, const char *s2);
 
-  /** 
+  /**
    * Convert a string in __DATE__ or __TIMESTAMP__ format into a time_t.
    * Return false on error, true on success
    */
@@ -200,11 +200,11 @@ public:
    */
   static bool Split(const char* s, kwsys_stl::vector<kwsys_stl::string>& l);
   static bool Split(const char* s, kwsys_stl::vector<kwsys_stl::string>& l, char separator);
-  
-  /** 
+
+  /**
    * Return string with space added between capitalized words
    * (i.e. EatMyShorts becomes Eat My Shorts )
-   * (note that IEatShorts becomes IEat Shorts) 
+   * (note that IEatShorts becomes IEat Shorts)
    */
   static kwsys_stl::string AddSpaceBetweenCapitalizedWords(
     const kwsys_stl::string&);
@@ -246,7 +246,7 @@ public:
    * Replace Windows file system slashes with Unix-style slashes.
    */
   static void ConvertToUnixSlashes(kwsys_stl::string& path);
-  
+
   /**
    * For windows this calls ConvertToWindowsOutputPath and for unix
    * it calls ConvertToUnixOutputPath
@@ -269,7 +269,7 @@ public:
 
   /**
    * Return true if a file exists in the current directory.
-   * If isFile = true, then make sure the file is a file and 
+   * If isFile = true, then make sure the file is a file and
    * not a directory.  If isFile = false, then return true
    * if it is a file or a directory.
    */
@@ -294,7 +294,7 @@ public:
      Change the modification time or create a file
   */
   static bool Touch(const char* filename, bool create);
-  
+
   /**
    *  Compare file modification times.
    *  Return true for successful comparison and false for error.
@@ -336,7 +336,7 @@ public:
    *  to the running executable.  If argv0 is not a full path,
    *  then this will try to find the full path.  If the path is not
    *  found false is returned, if found true is returned.  An error
-   *  message of the attempted paths is stored in errorMsg.  
+   *  message of the attempted paths is stored in errorMsg.
    *  exeName is the name of the executable.
    *  buildDir is a possibly null path to the build directory.
    *  installPrefix is a possibly null pointer to the install directory.
@@ -358,7 +358,7 @@ public:
   static kwsys_stl::string CollapseFullPath(const char* in_relative,
                                             const char* in_base);
 
-  /** 
+  /**
    * Get the real path for a given path, removing all symlinks.  In
    * the event of an error (non-existent path, permissions issue,
    * etc.) the original path is returned.
@@ -440,30 +440,30 @@ public:
    */
   static kwsys_stl::string GetFilenameLastExtension(
     const kwsys_stl::string& filename);
-  
+
   /**
    * Return file name without extension of a full filename
    */
   static kwsys_stl::string GetFilenameWithoutExtension(
     const kwsys_stl::string&);
-  
+
   /**
    * Return file name without its last (shortest) extension
    */
   static kwsys_stl::string GetFilenameWithoutLastExtension(
     const kwsys_stl::string&);
-  
+
   /**
    * Return whether the path represents a full path (not relative)
    */
   static bool FileIsFullPath(const char*);
-  
+
   /**
    * For windows return the short path for the given path,
    * Unix just a pass through
    */
   static bool GetShortPath(const char* path, kwsys_stl::string& result);
-  
+
   /**
    * Read line from file. Make sure to get everything. Due to a buggy stream
    * library on the HP and another on Mac OS X, we need this very carefully
@@ -471,7 +471,7 @@ public:
    * end-of-file was reached. If the has_newline argument is specified, it will
    * be true when the line read had a newline character.
    */
-  static bool GetLineFromStream(kwsys_ios::istream& istr, 
+  static bool GetLineFromStream(kwsys_ios::istream& istr,
                                 kwsys_stl::string& line,
                                 bool* has_newline=0,
                                 long sizeLimit=-1);
@@ -494,7 +494,7 @@ public:
   /**
    * Make a new directory if it is not there.  This function
    * can make a full path even if none of the directories existed
-   * prior to calling this function.  
+   * prior to calling this function.
    */
   static bool MakeDirectory(const char* path);
 
@@ -536,12 +536,12 @@ public:
    */
   static bool CopyADirectory(const char* source, const char* destination,
                              bool always = true);
-  
+
   /**
    * Remove a file
    */
   static bool RemoveFile(const char* source);
-  
+
   /**
    * Remove a directory
    */
@@ -557,7 +557,7 @@ public:
    */
   static kwsys_stl::string FindFile(
     const char* name,
-    const kwsys_stl::vector<kwsys_stl::string>& path = 
+    const kwsys_stl::vector<kwsys_stl::string>& path =
     kwsys_stl::vector<kwsys_stl::string>(),
     bool no_system_path = false);
 
@@ -566,7 +566,7 @@ public:
    */
   static kwsys_stl::string FindDirectory(
     const char* name,
-    const kwsys_stl::vector<kwsys_stl::string>& path = 
+    const kwsys_stl::vector<kwsys_stl::string>& path =
     kwsys_stl::vector<kwsys_stl::string>(),
     bool no_system_path = false);
 
@@ -575,12 +575,12 @@ public:
    */
   static kwsys_stl::string FindProgram(
     const char* name,
-    const kwsys_stl::vector<kwsys_stl::string>& path = 
+    const kwsys_stl::vector<kwsys_stl::string>& path =
     kwsys_stl::vector<kwsys_stl::string>(),
     bool no_system_path = false);
   static kwsys_stl::string FindProgram(
     const kwsys_stl::vector<kwsys_stl::string>& names,
-    const kwsys_stl::vector<kwsys_stl::string>& path = 
+    const kwsys_stl::vector<kwsys_stl::string>& path =
     kwsys_stl::vector<kwsys_stl::string>(),
     bool no_system_path = false);
 
@@ -590,17 +590,17 @@ public:
   static kwsys_stl::string FindLibrary(
     const char* name,
     const kwsys_stl::vector<kwsys_stl::string>& path);
-  
+
   /**
    * Return true if the file is a directory
    */
   static bool FileIsDirectory(const char* name);
-  
+
   /**
    * Return true if the file is a symlink
    */
   static bool FileIsSymlink(const char* name);
-  
+
   /**
    * Return true if the file has a given signature (first set of bytes)
    */
@@ -616,15 +616,15 @@ public:
    * The algorithm is simplistic, and should probably check for usual file
    * extensions, 'magic' signature, unicode, etc.
    */
-  enum FileTypeEnum 
-  { 
+  enum FileTypeEnum
+  {
     FileTypeUnknown,
     FileTypeBinary,
     FileTypeText
   };
   static SystemTools::FileTypeEnum DetectFileType(
-    const char* filename, 
-    unsigned long length = 256, 
+    const char* filename,
+    unsigned long length = 256,
     double percent_bin = 0.05);
 
   /**
@@ -649,18 +649,18 @@ public:
    * 'filename_found' is assigned the fully qualified name/path of the file
    * if it is found (not touched otherwise).
    * If 'try_filename_dirs' is true, try to find the file using the
-   * components of its path, i.e. if we are looking for c:/foo/bar/bill.txt, 
+   * components of its path, i.e. if we are looking for c:/foo/bar/bill.txt,
    * first look for bill.txt in 'dir', then in 'dir'/bar, then in 'dir'/foo/bar
    * etc.
    * Return true if the file was found, false otherwise.
    */
-  static bool LocateFileInDir(const char *filename, 
-                              const char *dir, 
+  static bool LocateFileInDir(const char *filename,
+                              const char *dir,
                               kwsys_stl::string& filename_found,
                               int try_filename_dirs = 0);
 
-  /** compute the relative path from local to remote.  local must 
-      be a directory.  remote can be a file or a directory.  
+  /** compute the relative path from local to remote.  local must
+      be a directory.  remote can be a file or a directory.
       Both remote and local must be full paths.  Basically, if
       you are in directory local and you want to access the file in remote
       what is the relative path to do that.  For example:
@@ -840,11 +840,11 @@ public:
    * Return true if the string matches the format; false otherwise.
    */
   static bool ParseURL( const kwsys_stl::string& URL,
-                        kwsys_stl::string& protocol, 
-                        kwsys_stl::string& username, 
-                        kwsys_stl::string& password, 
-                        kwsys_stl::string& hostname, 
-                        kwsys_stl::string& dataport, 
+                        kwsys_stl::string& protocol,
+                        kwsys_stl::string& username,
+                        kwsys_stl::string& password,
+                        kwsys_stl::string& hostname,
+                        kwsys_stl::string& dataport,
                         kwsys_stl::string& datapath );
 
 private:
@@ -872,7 +872,7 @@ private:
    */
   static kwsys_stl::string FindName(
     const char* name,
-    const kwsys_stl::vector<kwsys_stl::string>& path = 
+    const kwsys_stl::vector<kwsys_stl::string>& path =
     kwsys_stl::vector<kwsys_stl::string>(),
     bool no_system_path = false);
 

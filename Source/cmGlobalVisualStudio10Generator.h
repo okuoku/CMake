@@ -20,26 +20,26 @@
  *
  * cmGlobalVisualStudio10Generator manages UNIX build process for a tree
  */
-class cmGlobalVisualStudio10Generator : 
+class cmGlobalVisualStudio10Generator :
   public cmGlobalVisualStudio8Generator
 {
 public:
   cmGlobalVisualStudio10Generator();
-  static cmGlobalGenerator* New() { 
+  static cmGlobalGenerator* New() {
     return new cmGlobalVisualStudio10Generator; }
-  
-  virtual std::string 
+
+  virtual std::string
   GenerateBuildCommand(const char* makeProgram,
-                       const char *projectName, 
+                       const char *projectName,
                        const char* additionalOptions, const char *targetName,
                        const char* config, bool ignoreErrors, bool);
-  
+
   ///! Get the name for the generator.
   virtual const char* GetName() const {
     return cmGlobalVisualStudio10Generator::GetActualName();}
   static const char* GetActualName() {return "Visual Studio 10";}
   virtual void AddPlatformDefinitions(cmMakefile* mf);
-  
+
   /** Get the documentation entry for this generator.  */
   virtual void GetDocumentation(cmDocumentationEntry& entry) const;
 
@@ -48,9 +48,9 @@ public:
 
   /**
    * Try to determine system infomation such as shared library
-   * extension, pthreads, byte order etc.  
+   * extension, pthreads, byte order etc.
    */
-  virtual void EnableLanguage(std::vector<std::string>const& languages, 
+  virtual void EnableLanguage(std::vector<std::string>const& languages,
                               cmMakefile *, bool optional);
   virtual void WriteSLNHeader(std::ostream& fout);
 
@@ -72,7 +72,7 @@ public:
    * Studio?
    */
   virtual std::string GetUserMacrosRegKeyBase();
-  virtual const char* GetCMakeCFGInitDirectory() 
+  virtual const char* GetCMakeCFGInitDirectory()
     { return "$(Configuration)";}
   bool Find64BitTools(cmMakefile* mf);
 protected:

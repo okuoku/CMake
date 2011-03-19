@@ -327,10 +327,10 @@ cmVisualStudioGeneratorOptions
   if(!this->FlagString.empty())
     {
     if(this->Version == 10)
-      { 
+      {
       fout << prefix;
       if(this->Configuration.size())
-        { 
+        {
         this->TargetGenerator->WritePlatformConfigTag(
           "AdditionalOptions",
           this->Configuration.c_str(),

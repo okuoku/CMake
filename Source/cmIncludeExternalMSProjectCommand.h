@@ -27,7 +27,7 @@ public:
   /**
    * This is a virtual constructor for the command.
    */
-  virtual cmCommand* Clone() 
+  virtual cmCommand* Clone()
     {
     return new cmIncludeExternalMSProjectCommand;
     }
@@ -38,7 +38,7 @@ public:
    */
   virtual bool InitialPass(std::vector<std::string> const& args,
                            cmExecutionStatus &status);
-  
+
   /**
    * The name of the command as specified in CMakeList.txt.
    */
@@ -47,11 +47,11 @@ public:
   /**
    * Succinct documentation.
    */
-  virtual const char* GetTerseDocumentation() 
+  virtual const char* GetTerseDocumentation()
     {
     return "Include an external Microsoft project file in a workspace.";
     }
-  
+
   /**
    * More documentation.
    */
@@ -65,7 +65,7 @@ public:
       "target named [projectname].  This can be used in the add_dependencies "
       "command to make things depend on the external project.";
     }
-  
+
   cmTypeMacro(cmIncludeExternalMSProjectCommand, cmCommand);
 };
 

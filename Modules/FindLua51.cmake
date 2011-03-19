@@ -1,8 +1,8 @@
 # Locate Lua library
 # This module defines
-#  LUA51_FOUND, if false, do not try to link to Lua 
+#  LUA51_FOUND, if false, do not try to link to Lua
 #  LUA_LIBRARIES
-#  LUA_INCLUDE_DIR, where to find lua.h 
+#  LUA_INCLUDE_DIR, where to find lua.h
 #
 # Note that the expected include convention is
 #  #include "lua.h"
@@ -39,7 +39,7 @@ FIND_PATH(LUA_INCLUDE_DIR lua.h
   /opt
 )
 
-FIND_LIBRARY(LUA_LIBRARY 
+FIND_LIBRARY(LUA_LIBRARY
   NAMES lua51 lua5.1 lua-5.1 lua
   HINTS
   $ENV{LUA_DIR}
@@ -67,7 +67,7 @@ IF(LUA_LIBRARY)
 ENDIF(LUA_LIBRARY)
 
 INCLUDE(${CMAKE_CURRENT_LIST_DIR}/FindPackageHandleStandardArgs.cmake)
-# handle the QUIETLY and REQUIRED arguments and set LUA_FOUND to TRUE if 
+# handle the QUIETLY and REQUIRED arguments and set LUA_FOUND to TRUE if
 # all listed variables are TRUE
 FIND_PACKAGE_HANDLE_STANDARD_ARGS(Lua51  DEFAULT_MSG  LUA_LIBRARIES LUA_INCLUDE_DIR)
 

@@ -17,7 +17,7 @@
 /** \class cmCMakeMinimumRequired
  * \brief Build a CMAKE variable
  *
- * cmCMakeMinimumRequired sets a variable to a value with expansion.  
+ * cmCMakeMinimumRequired sets a variable to a value with expansion.
  */
 class cmCMakeMinimumRequired : public cmCommand
 {
@@ -25,7 +25,7 @@ public:
   /**
    * This is a virtual constructor for the command.
    */
-  virtual cmCommand* Clone() 
+  virtual cmCommand* Clone()
     {
     return new cmCMakeMinimumRequired;
     }
@@ -46,15 +46,15 @@ public:
    * The name of the command as specified in CMakeList.txt.
    */
   virtual const char* GetName() {return "cmake_minimum_required";}
-  
+
   /**
    * Succinct documentation.
    */
-  virtual const char* GetTerseDocumentation() 
+  virtual const char* GetTerseDocumentation()
     {
     return "Set the minimum required version of cmake for a project.";
     }
-  
+
   /**
    * More documentation.
    */
@@ -77,7 +77,7 @@ public:
       "It should be specified so CMake versions 2.4 and lower fail with an "
       "error instead of just a warning.";
     }
-  
+
   cmTypeMacro(cmCMakeMinimumRequired, cmCommand);
 
 private:

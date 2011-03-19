@@ -36,7 +36,7 @@ public:
   virtual void AddHelperCommands();
 
   /**
-   * Generate the makefile for this directory. 
+   * Generate the makefile for this directory.
    */
   virtual void Generate();
 
@@ -51,16 +51,16 @@ public:
 
   virtual std::string GetTargetDirectory(cmTarget const& target) const;
   void GetTargetObjectFileDirectories(cmTarget* target,
-                                      std::vector<std::string>& 
+                                      std::vector<std::string>&
                                       dirs);
 private:
   std::string DSPHeaderTemplate;
   std::string DSPFooterTemplate;
 
   void CreateSingleDSP(const char *lname, cmTarget &tgt);
-  void WriteDSPFile(std::ostream& fout, const char *libName, 
+  void WriteDSPFile(std::ostream& fout, const char *libName,
                     cmTarget &tgt);
-  void WriteDSPBeginGroup(std::ostream& fout, 
+  void WriteDSPBeginGroup(std::ostream& fout,
                           const char* group,
                           const char* filter);
   void WriteDSPEndGroup(std::ostream& fout);
@@ -83,8 +83,8 @@ private:
   friend class EventWriter;
   cmsys::auto_ptr<cmCustomCommand>
   MaybeCreateOutputDir(cmTarget& target, const char* config);
-  std::string CreateTargetRules(cmTarget &target, 
-                                const char* configName, 
+  std::string CreateTargetRules(cmTarget &target,
+                                const char* configName,
                                 const char *libName);
   void ComputeLinkOptions(cmTarget& target, const char* configName,
                           const std::string extraOptions,

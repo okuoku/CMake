@@ -25,7 +25,7 @@ public:
   /**
    * This is a virtual constructor for the command.
    */
-  virtual cmCommand* Clone() 
+  virtual cmCommand* Clone()
     {
     return new cmElseCommand;
     }
@@ -50,11 +50,11 @@ public:
   /**
    * Succinct documentation.
    */
-  virtual const char* GetTerseDocumentation() 
+  virtual const char* GetTerseDocumentation()
     {
     return "Starts the else portion of an if block.";
     }
-  
+
   /**
    * More documentation.
    */
@@ -64,7 +64,7 @@ public:
       "  else(expression)\n"
       "See the if command.";
     }
-  
+
   cmTypeMacro(cmElseCommand, cmCommand);
 };
 

@@ -10,7 +10,7 @@
 
 
 SET(CMAKE_DL_LIBS "dl")
-SET(CMAKE_SHARED_LIBRARY_C_FLAGS "-fPIC")            # -pic 
+SET(CMAKE_SHARED_LIBRARY_C_FLAGS "-fPIC")            # -pic
 SET(CMAKE_SHARED_LIBRARY_CREATE_C_FLAGS "-shared")       # -shared
 SET(CMAKE_SHARED_LIBRARY_LINK_C_FLAGS "")         # +s, flag for exe link to use shared lib
 SET(CMAKE_SHARED_LIBRARY_SONAME_C_FLAG "-Wl,-soname,")

@@ -38,7 +38,7 @@ FIND_LIBRARY(LIBXSLT_LIBRARIES NAMES xslt libxslt
    ${PC_LIBXSLT_LIBRARY_DIRS}
   )
 
-# handle the QUIETLY and REQUIRED arguments and set LIBXML2_FOUND to TRUE if 
+# handle the QUIETLY and REQUIRED arguments and set LIBXML2_FOUND to TRUE if
 # all listed variables are TRUE
 INCLUDE(${CMAKE_CURRENT_LIST_DIR}/FindPackageHandleStandardArgs.cmake)
 FIND_PACKAGE_HANDLE_STANDARD_ARGS(LibXslt DEFAULT_MSG LIBXSLT_LIBRARIES LIBXSLT_INCLUDE_DIR)

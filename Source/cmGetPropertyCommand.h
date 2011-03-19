@@ -19,7 +19,7 @@ class cmGetPropertyCommand : public cmCommand
 public:
   cmGetPropertyCommand();
 
-  virtual cmCommand* Clone() 
+  virtual cmCommand* Clone()
     {
       return new cmGetPropertyCommand;
     }
@@ -44,11 +44,11 @@ public:
   /**
    * Succinct documentation.
    */
-  virtual const char* GetTerseDocumentation() 
+  virtual const char* GetTerseDocumentation()
     {
     return "Get a property.";
     }
-  
+
   /**
    * Longer documentation.
    */
@@ -92,7 +92,7 @@ public:
         "If documentation is requested for a property that has not been "
         "defined NOTFOUND is returned.";
     }
-  
+
   cmTypeMacro(cmGetPropertyCommand, cmCommand);
 private:
   enum OutType { OutValue, OutDefined, OutBriefDoc, OutFullDoc, OutSet };

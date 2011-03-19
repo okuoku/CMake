@@ -8,7 +8,7 @@
 # correspond to the ./configure --prefix=$PHYSFSDIR
 # used in building PHYSFS.
 #
-# Created by Eric Wing. 
+# Created by Eric Wing.
 
 #=============================================================================
 # Copyright 2005-2009 Kitware, Inc.
@@ -38,7 +38,7 @@ FIND_PATH(PHYSFS_INCLUDE_DIR physfs.h
   /opt
 )
 
-FIND_LIBRARY(PHYSFS_LIBRARY 
+FIND_LIBRARY(PHYSFS_LIBRARY
   NAMES physfs
   HINTS
   $ENV{PHYSFSDIR}

@@ -92,7 +92,7 @@ bool cmConfigureFileCommand
       this->Immediate = true;
       }
     }
-  
+
   // If we were told to copy the file immediately, then do it on the
   // first pass (now).
   if(this->Immediate)
@@ -103,7 +103,7 @@ bool cmConfigureFileCommand
       return false;
       }
     }
-  
+
   return true;
 }
 

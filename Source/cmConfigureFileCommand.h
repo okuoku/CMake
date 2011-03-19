@@ -19,7 +19,7 @@ class cmConfigureFileCommand : public cmCommand
 public:
   cmTypeMacro(cmConfigureFileCommand, cmCommand);
 
-  virtual cmCommand* Clone() 
+  virtual cmCommand* Clone()
     {
       return new cmConfigureFileCommand;
     }
@@ -44,11 +44,11 @@ public:
   /**
    * Succinct documentation.
    */
-  virtual const char* GetTerseDocumentation() 
+  virtual const char* GetTerseDocumentation()
     {
     return "Copy a file to another location and modify its contents.";
     }
-  
+
   /**
    * Longer documentation.
    */
@@ -88,7 +88,7 @@ public:
   virtual bool HasFinalPass() const { return !this->Immediate; }
 private:
   int ConfigureFile();
-  
+
   std::string InputFile;
   std::string OutputFile;
   bool CopyOnly;

@@ -27,20 +27,20 @@ class cmVisualStudioGeneratorOptions;
 class cmVisualStudio10TargetGenerator
 {
 public:
-  cmVisualStudio10TargetGenerator(cmTarget* target, 
+  cmVisualStudio10TargetGenerator(cmTarget* target,
                                   cmGlobalVisualStudio10Generator* gg);
   ~cmVisualStudio10TargetGenerator();
   void Generate();
-  // used by cmVisualStudioGeneratorOptions 
-  void WritePlatformConfigTag( 
+  // used by cmVisualStudioGeneratorOptions
+  void WritePlatformConfigTag(
     const char* tag,
-    const char* config, 
+    const char* config,
     int indentLevel,
     const char* attribute = 0,
     const char* end = 0,
     std::ostream* strm = 0
     );
-  
+
 private:
   void ConvertToWindowsSlash(std::string& s);
   void WriteString(const char* line, int indentLevel);

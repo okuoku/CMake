@@ -73,10 +73,10 @@ namespace @KWSYS_NAMESPACE@
  * and utilities.
  *
  * Example: The perl code
- * 
+ *
  *    $filename =~ m"([a-z]+)\.cc";
  *    print $1;
- *    
+ *
  * Is written as follows in C++
  *
  *    RegularExpression re("([a-z]+)\\.cc");
@@ -186,19 +186,19 @@ namespace @KWSYS_NAMESPACE@
  *      the line.  It would match "drepa qrepb" in "rep drepa qrepb".
  *
  */
-class @KWSYS_NAMESPACE@_EXPORT RegularExpression 
+class @KWSYS_NAMESPACE@_EXPORT RegularExpression
 {
 public:
   /**
    * Instantiate RegularExpression with program=NULL.
    */
-  inline RegularExpression ();        
+  inline RegularExpression ();
 
   /**
    * Instantiate RegularExpression with compiled char*.
    */
   inline RegularExpression (char const*);
-  
+
   /**
    * Instantiate RegularExpression as a copy of another regular expression.
    */
@@ -225,7 +225,7 @@ public:
    * Matches the regular expression to the given std string.
    * Returns true if found, and sets start and end indexes accordingly.
    */
-  bool find (kwsys_stl::string const&);               
+  bool find (kwsys_stl::string const&);
 
   /**
    * Index to start of first find.
@@ -259,7 +259,7 @@ public:
    * and the same start and end pointers.
    */
   bool deep_equal (RegularExpression const&) const;
-  
+
   /**
    * True if the compiled regexp is valid.
    */
@@ -268,7 +268,7 @@ public:
   /**
    * Marks the regular expression as invalid.
    */
-  inline void set_invalid();            
+  inline void set_invalid();
 
   /**
    * Destructor.
@@ -277,16 +277,16 @@ public:
   kwsys_stl::string::size_type start(int n) const;
   kwsys_stl::string::size_type end(int n) const;
   kwsys_stl::string match(int n) const;
-  
+
   enum { NSUBEXP = 10 };
-private: 
+private:
   const char* startp[NSUBEXP];
   const char* endp[NSUBEXP];
   char  regstart;                       // Internal use only
   char  reganch;                        // Internal use only
   const char* regmust;                  // Internal use only
   kwsys_stl::string::size_type regmlen;                // Internal use only
-  char* program;   
+  char* program;
   int   progsize;
   const char* searchstring;
 };
@@ -294,8 +294,8 @@ private:
 /**
  * Create an empty regular expression.
  */
-inline RegularExpression::RegularExpression () 
-{ 
+inline RegularExpression::RegularExpression ()
+{
   this->program = 0;
 }
 
@@ -303,8 +303,8 @@ inline RegularExpression::RegularExpression ()
  * Creates a regular expression from string s, and
  * compiles s.
  */
-inline RegularExpression::RegularExpression (const char* s) 
-{  
+inline RegularExpression::RegularExpression (const char* s)
+{
   this->program = 0;
   if ( s )
     {
@@ -315,7 +315,7 @@ inline RegularExpression::RegularExpression (const char* s)
 /**
  * Destroys and frees space allocated for the regular expression.
  */
-inline RegularExpression::~RegularExpression () 
+inline RegularExpression::~RegularExpression ()
 {
 //#ifndef WIN32
   delete [] this->program;
@@ -325,7 +325,7 @@ inline RegularExpression::~RegularExpression ()
 /**
  * Set the start position for the regular expression.
  */
-inline kwsys_stl::string::size_type RegularExpression::start () const 
+inline kwsys_stl::string::size_type RegularExpression::start () const
 {
   return static_cast<kwsys_stl::string::size_type>(
     this->startp[0] - searchstring);
@@ -335,7 +335,7 @@ inline kwsys_stl::string::size_type RegularExpression::start () const
 /**
  * Returns the start/end index of the last item found.
  */
-inline kwsys_stl::string::size_type RegularExpression::end () const 
+inline kwsys_stl::string::size_type RegularExpression::end () const
 {
   return static_cast<kwsys_stl::string::size_type>(
     this->endp[0] - searchstring);
@@ -345,7 +345,7 @@ inline kwsys_stl::string::size_type RegularExpression::end () const
  * Returns true if two regular expressions have different
  * compiled program for pattern matching.
  */
-inline bool RegularExpression::operator!= (const RegularExpression& r) const 
+inline bool RegularExpression::operator!= (const RegularExpression& r) const
 {
   return(!(*this == r));
 }
@@ -354,13 +354,13 @@ inline bool RegularExpression::operator!= (const RegularExpression& r) const
  * Returns true if a valid regular expression is compiled
  * and ready for pattern matching.
  */
-inline bool RegularExpression::is_valid () const 
+inline bool RegularExpression::is_valid () const
 {
   return (this->program != 0);
 }
 
 
-inline void RegularExpression::set_invalid () 
+inline void RegularExpression::set_invalid ()
 {
 //#ifndef WIN32
   delete [] this->program;

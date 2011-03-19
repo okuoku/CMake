@@ -16,7 +16,7 @@
 #include "cmDocumentGeneratorExpressions.h"
 
 /** \class cmAddCustomCommandCommand
- * \brief 
+ * \brief
  *
  *  cmAddCustomCommandCommand defines a new command (rule) that can
  *  be executed within the build process
@@ -29,7 +29,7 @@ public:
   /**
    * This is a virtual constructor for the command.
    */
-  virtual cmCommand* Clone() 
+  virtual cmCommand* Clone()
     {
     return new cmAddCustomCommandCommand;
     }
@@ -45,15 +45,15 @@ public:
    * The name of the command as specified in CMakeList.txt.
    */
   virtual const char* GetName() {return "add_custom_command";}
-  
+
   /**
    * Succinct documentation.
    */
-  virtual const char* GetTerseDocumentation() 
+  virtual const char* GetTerseDocumentation()
     {
     return "Add a custom build rule to the generated build system.";
     }
-  
+
   /**
    * More documentation.
    */
@@ -177,7 +177,7 @@ public:
       "is recompiled.\n"
       ;
     }
-  
+
   cmTypeMacro(cmAddCustomCommandCommand, cmCommand);
 protected:
   bool CheckOutputs(const std::vector<std::string>& outputs);

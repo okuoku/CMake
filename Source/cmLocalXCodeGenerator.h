@@ -28,7 +28,7 @@ public:
 
   virtual ~cmLocalXCodeGenerator();
   void GetTargetObjectFileDirectories(cmTarget* target,
-                                      std::vector<std::string>& 
+                                      std::vector<std::string>&
                                       dirs);
   virtual std::string GetTargetDirectory(cmTarget const& target) const;
 private:

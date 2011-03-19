@@ -17,7 +17,7 @@
 /** \class cmBuildCommand
  * \brief Build a CMAKE variable
  *
- * cmBuildCommand sets a variable to a value with expansion.  
+ * cmBuildCommand sets a variable to a value with expansion.
  */
 class cmBuildCommand : public cmCommand
 {
@@ -25,7 +25,7 @@ public:
   /**
    * This is a virtual constructor for the command.
    */
-  virtual cmCommand* Clone() 
+  virtual cmCommand* Clone()
     {
     return new cmBuildCommand;
     }
@@ -55,7 +55,7 @@ public:
   /**
    * Succinct documentation.
    */
-  virtual const char* GetTerseDocumentation() 
+  virtual const char* GetTerseDocumentation()
     {
     return "Get the command line to build this project.";
     }

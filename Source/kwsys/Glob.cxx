@@ -260,7 +260,7 @@ void Glob::RecurseDirectory(kwsys_stl::string::size_type start,
 
     if ( !dir_only || !kwsys::SystemTools::FileIsDirectory(realname.c_str()) )
       {
-      if ( (this->Internals->Expressions.size() > 0) && 
+      if ( (this->Internals->Expressions.size() > 0) &&
            this->Internals->Expressions[
              this->Internals->Expressions.size()-1].find(fname.c_str()) )
         {

@@ -23,25 +23,25 @@
 static cmInstallTargetGenerator* CreateInstallTargetGenerator(cmTarget& target,
      const cmInstallCommandArguments& args, bool impLib, bool forceOpt = false)
 {
-  return new cmInstallTargetGenerator(target, args.GetDestination().c_str(), 
-                        impLib, args.GetPermissions().c_str(), 
+  return new cmInstallTargetGenerator(target, args.GetDestination().c_str(),
+                        impLib, args.GetPermissions().c_str(),
                         args.GetConfigurations(), args.GetComponent().c_str(),
                         args.GetOptional() || forceOpt);
 }
 
 static cmInstallFilesGenerator* CreateInstallFilesGenerator(
-    const std::vector<std::string>& absFiles, 
+    const std::vector<std::string>& absFiles,
     const cmInstallCommandArguments& args, bool programs)
 {
-  return new cmInstallFilesGenerator(absFiles, args.GetDestination().c_str(), 
-                        programs, args.GetPermissions().c_str(), 
+  return new cmInstallFilesGenerator(absFiles, args.GetDestination().c_str(),
+                        programs, args.GetPermissions().c_str(),
                         args.GetConfigurations(), args.GetComponent().c_str(),
                         args.GetRename().c_str(), args.GetOptional());
 }
 
 
 // cmInstallCommand
-bool cmInstallCommand::InitialPass(std::vector<std::string> const& args, 
+bool cmInstallCommand::InitialPass(std::vector<std::string> const& args,
                                    cmExecutionStatus &)
 {
   // Allow calling with no arguments so that arguments may be built up
@@ -190,7 +190,7 @@ bool cmInstallCommand::HandleScriptMode(std::vector<std::string> const& args)
 
 /*struct InstallPart
 {
-  InstallPart(cmCommandArgumentsHelper* helper, const char* key, 
+  InstallPart(cmCommandArgumentsHelper* helper, const char* key,
          cmCommandArgumentGroup* group);
   cmCAStringVector argVector;
   cmInstallCommandArguments args;
@@ -239,7 +239,7 @@ bool cmInstallCommand::HandleTargetsMode(std::vector<std::string> const& args)
   cmInstallCommandArguments publicHeaderArgs;
   cmInstallCommandArguments resourceArgs;
 
-  // now parse the args for specific parts of the target (e.g. LIBRARY, 
+  // now parse the args for specific parts of the target (e.g. LIBRARY,
   // RUNTIME, ARCHIVE etc.
   archiveArgs.Parse      (&archiveArgVector.GetVector(),       &unknownArgs);
   libraryArgs.Parse      (&libraryArgVector.GetVector(),       &unknownArgs);
@@ -345,7 +345,7 @@ bool cmInstallCommand::HandleTargetsMode(std::vector<std::string> const& args)
                        this->Makefile->IsOn("CYGWIN") ||
                        this->Makefile->IsOn("MINGW"));
 
-  for(std::vector<std::string>::const_iterator 
+  for(std::vector<std::string>::const_iterator
       targetIt=targetList.GetVector().begin();
       targetIt!=targetList.GetVector().end();
       ++targetIt)
@@ -413,7 +413,7 @@ bool cmInstallCommand::HandleTargetsMode(std::vector<std::string> const& args)
       case cmTarget::SHARED_LIBRARY:
         {
         // Shared libraries are handled differently on DLL and non-DLL
-        // platforms.  All windows platforms are DLL platforms including 
+        // platforms.  All windows platforms are DLL platforms including
         // cygwin.  Currently no other platform is a DLL platform.
         if(dll_platform)
           {
@@ -427,13 +427,13 @@ bool cmInstallCommand::HandleTargetsMode(std::vector<std::string> const& args)
           if(!archiveArgs.GetDestination().empty())
             {
             // The import library uses the ARCHIVE properties.
-            archiveGenerator = CreateInstallTargetGenerator(target, 
+            archiveGenerator = CreateInstallTargetGenerator(target,
                                                             archiveArgs, true);
             }
           if(!runtimeArgs.GetDestination().empty())
             {
             // The DLL uses the RUNTIME properties.
-            runtimeGenerator = CreateInstallTargetGenerator(target, 
+            runtimeGenerator = CreateInstallTargetGenerator(target,
                                                            runtimeArgs, false);
             }
           if ((archiveGenerator==0) && (runtimeGenerator==0))
@@ -458,7 +458,7 @@ bool cmInstallCommand::HandleTargetsMode(std::vector<std::string> const& args)
             // Use the FRAMEWORK properties.
             if (!frameworkArgs.GetDestination().empty())
               {
-              frameworkGenerator = CreateInstallTargetGenerator(target, 
+              frameworkGenerator = CreateInstallTargetGenerator(target,
                                                          frameworkArgs, false);
               }
             else
@@ -475,7 +475,7 @@ bool cmInstallCommand::HandleTargetsMode(std::vector<std::string> const& args)
             // The shared library uses the LIBRARY properties.
             if (!libraryArgs.GetDestination().empty())
               {
-              libraryGenerator = CreateInstallTargetGenerator(target, 
+              libraryGenerator = CreateInstallTargetGenerator(target,
                                                            libraryArgs, false);
               libraryGenerator->SetNamelinkMode(namelinkMode);
               namelinkOnly =
@@ -498,7 +498,7 @@ bool cmInstallCommand::HandleTargetsMode(std::vector<std::string> const& args)
         // Static libraries use ARCHIVE properties.
         if (!archiveArgs.GetDestination().empty())
           {
-          archiveGenerator = CreateInstallTargetGenerator(target, archiveArgs, 
+          archiveGenerator = CreateInstallTargetGenerator(target, archiveArgs,
                                                           false);
           }
         else
@@ -516,7 +516,7 @@ bool cmInstallCommand::HandleTargetsMode(std::vector<std::string> const& args)
         // Modules use LIBRARY properties.
         if (!libraryArgs.GetDestination().empty())
           {
-          libraryGenerator = CreateInstallTargetGenerator(target, libraryArgs, 
+          libraryGenerator = CreateInstallTargetGenerator(target, libraryArgs,
                                                           false);
           libraryGenerator->SetNamelinkMode(namelinkMode);
           namelinkOnly =
@@ -539,7 +539,7 @@ bool cmInstallCommand::HandleTargetsMode(std::vector<std::string> const& args)
           // Application bundles use the BUNDLE properties.
           if (!bundleArgs.GetDestination().empty())
             {
-            bundleGenerator = CreateInstallTargetGenerator(target, bundleArgs, 
+            bundleGenerator = CreateInstallTargetGenerator(target, bundleArgs,
                                                            false);
             }
           else if(!runtimeArgs.GetDestination().empty())
@@ -571,7 +571,7 @@ bool cmInstallCommand::HandleTargetsMode(std::vector<std::string> const& args)
           // Executables use the RUNTIME properties.
           if (!runtimeArgs.GetDestination().empty())
             {
-            runtimeGenerator = CreateInstallTargetGenerator(target, 
+            runtimeGenerator = CreateInstallTargetGenerator(target,
                                                            runtimeArgs, false);
             }
           else
@@ -591,7 +591,7 @@ bool cmInstallCommand::HandleTargetsMode(std::vector<std::string> const& args)
            target.IsExecutableWithExports())
           {
           // The import library uses the ARCHIVE properties.
-          archiveGenerator = CreateInstallTargetGenerator(target, 
+          archiveGenerator = CreateInstallTargetGenerator(target,
                                                       archiveArgs, true, true);
           }
         }
@@ -630,7 +630,7 @@ bool cmInstallCommand::HandleTargetsMode(std::vector<std::string> const& args)
       // Create the files install generator.
       if (!privateHeaderArgs.GetDestination().empty())
         {
-        privateHeaderGenerator = CreateInstallFilesGenerator(absFiles, 
+        privateHeaderGenerator = CreateInstallFilesGenerator(absFiles,
                                                      privateHeaderArgs, false);
         }
       else
@@ -656,7 +656,7 @@ bool cmInstallCommand::HandleTargetsMode(std::vector<std::string> const& args)
       // Create the files install generator.
       if (!publicHeaderArgs.GetDestination().empty())
         {
-        publicHeaderGenerator = CreateInstallFilesGenerator(absFiles, 
+        publicHeaderGenerator = CreateInstallFilesGenerator(absFiles,
                                                       publicHeaderArgs, false);
         }
       else
@@ -682,7 +682,7 @@ bool cmInstallCommand::HandleTargetsMode(std::vector<std::string> const& args)
       // Create the files install generator.
       if (!resourceArgs.GetDestination().empty())
         {
-        resourceGenerator = CreateInstallFilesGenerator(absFiles, 
+        resourceGenerator = CreateInstallFilesGenerator(absFiles,
                                                         resourceArgs, false);
         }
       else
@@ -701,7 +701,7 @@ bool cmInstallCommand::HandleTargetsMode(std::vector<std::string> const& args)
     installsRuntime = installsRuntime || runtimeGenerator != 0;
     installsFramework = installsFramework || frameworkGenerator != 0;
     installsBundle = installsBundle || bundleGenerator != 0;
-    installsPrivateHeader = installsPrivateHeader 
+    installsPrivateHeader = installsPrivateHeader
       || privateHeaderGenerator != 0;
     installsPublicHeader = installsPublicHeader || publicHeaderGenerator != 0;
     installsResource = installsResource || resourceGenerator;
@@ -720,7 +720,7 @@ bool cmInstallCommand::HandleTargetsMode(std::vector<std::string> const& args)
     if(!exports.GetString().empty() && !namelinkOnly)
       {
       this->Makefile->GetLocalGenerator()->GetGlobalGenerator()
-        ->AddTargetToExports(exports.GetCString(), &target, 
+        ->AddTargetToExports(exports.GetCString(), &target,
                              archiveGenerator, runtimeGenerator,
                              libraryGenerator, frameworkGenerator,
                              bundleGenerator, publicHeaderGenerator);
@@ -794,7 +794,7 @@ bool cmInstallCommand::HandleFilesMode(std::vector<std::string> const& args)
     this->SetError(e.str().c_str());
     return false;
     }
-  
+
   // Check if there is something to do.
   if(files.GetVector().empty())
     {

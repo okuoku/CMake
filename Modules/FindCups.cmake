@@ -4,7 +4,7 @@
 #  CUPS_FOUND - system has Cups
 #  CUPS_INCLUDE_DIR - the Cups include directory
 #  CUPS_LIBRARIES - Libraries needed to use Cups
-#  Set CUPS_REQUIRE_IPP_DELETE_ATTRIBUTE to TRUE if you need a version which 
+#  Set CUPS_REQUIRE_IPP_DELETE_ATTRIBUTE to TRUE if you need a version which
 #  features this function (i.e. at least 1.1.19)
 
 #=============================================================================
@@ -50,7 +50,7 @@ ELSE (CUPS_FOUND)
       MESSAGE(FATAL_ERROR "Could NOT find Cups")
    ENDIF (Cups_FIND_REQUIRED)
 ENDIF (CUPS_FOUND)
-  
-  
+
+
 MARK_AS_ADVANCED(CUPS_INCLUDE_DIR CUPS_LIBRARIES)
-  
+

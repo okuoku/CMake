@@ -25,7 +25,7 @@ public:
   /**
    * This is a virtual constructor for the command.
    */
-  virtual cmCommand* Clone() 
+  virtual cmCommand* Clone()
     {
     return new cmLoadCommandCommand;
     }
@@ -41,15 +41,15 @@ public:
    * The name of the command as specified in CMakeList.txt.
    */
   virtual const char* GetName() {return "load_command";}
-  
+
   /**
    * Succinct documentation.
    */
-  virtual const char* GetTerseDocumentation() 
+  virtual const char* GetTerseDocumentation()
     {
     return "Load a command into a running CMake.";
     }
-  
+
   /**
    * More documentation.
    */
@@ -66,7 +66,7 @@ public:
       "will be set to the full path of the module that was loaded.  "
       "Otherwise the variable will not be set.";
     }
-  
+
   cmTypeMacro(cmLoadCommandCommand, cmCommand);
 };
 

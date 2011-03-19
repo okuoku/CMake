@@ -25,7 +25,7 @@ public:
   /**
    * This is a virtual constructor for the command.
    */
-  virtual cmCommand* Clone() 
+  virtual cmCommand* Clone()
     {
     return new cmLoadCacheCommand;
     }
@@ -45,11 +45,11 @@ public:
   /**
    * Succinct documentation.
    */
-  virtual const char* GetTerseDocumentation() 
+  virtual const char* GetTerseDocumentation()
     {
     return "Load in the values from another project's CMake cache.";
     }
-  
+
   /**
    * More documentation.
    */
@@ -74,13 +74,13 @@ public:
       "of this form of the command is strongly discouraged, but it is "
       "provided for backward compatibility.";
     }
-  
+
   cmTypeMacro(cmLoadCacheCommand, cmCommand);
 protected:
-  
+
   std::set<cmStdString> VariablesToRead;
   std::string Prefix;
-  
+
   bool ReadWithPrefix(std::vector<std::string> const& args);
   void CheckLine(const char* line);
 };

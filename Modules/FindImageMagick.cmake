@@ -156,7 +156,7 @@ FOREACH(component ${ImageMagick_FIND_COMPONENTS}
       FIND_IMAGEMAGICK_EXE(${component})
     ENDIF(ImageMagick_EXECUTABLE_DIR)
   ENDIF(component STREQUAL "Magick++")
-  
+
   IF(NOT ImageMagick_${component}_FOUND)
     LIST(FIND ImageMagick_FIND_COMPONENTS ${component} is_requested)
     IF(is_requested GREATER -1)

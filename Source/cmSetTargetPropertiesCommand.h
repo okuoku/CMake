@@ -17,7 +17,7 @@
 class cmSetTargetPropertiesCommand : public cmCommand
 {
 public:
-  virtual cmCommand* Clone() 
+  virtual cmCommand* Clone()
     {
       return new cmSetTargetPropertiesCommand;
     }
@@ -32,21 +32,21 @@ public:
   /**
    * The name of the command as specified in CMakeList.txt.
    */
-  virtual const char* GetName() { return "set_target_properties";}  
+  virtual const char* GetName() { return "set_target_properties";}
 
   /**
    * Succinct documentation.
    */
-  virtual const char* GetTerseDocumentation() 
+  virtual const char* GetTerseDocumentation()
     {
     return "Targets can have properties that affect how they are built.";
     }
-  
+
   /**
    *  Used by this command and cmSetPropertiesCommand
    */
-  static bool SetOneTarget(const char *tname, 
-                           std::vector<std::string> &propertyPairs, 
+  static bool SetOneTarget(const char *tname,
+                           std::vector<std::string> &propertyPairs,
                            cmMakefile *mf);
 
   /**
@@ -158,7 +158,7 @@ public:
         "part of the default build when you select \"Build Solution\"."
         ;
     }
-  
+
   cmTypeMacro(cmSetTargetPropertiesCommand, cmCommand);
 };
 

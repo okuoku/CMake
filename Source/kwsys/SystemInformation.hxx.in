@@ -25,10 +25,10 @@ namespace @KWSYS_NAMESPACE@
 {
 
 
-// forward declare the implementation class  
+// forward declare the implementation class
 class SystemInformationImplementation;
-  
-class @KWSYS_NAMESPACE@_EXPORT SystemInformation 
+
+class @KWSYS_NAMESPACE@_EXPORT SystemInformation
 {
 
 public:
@@ -49,7 +49,7 @@ public:
   int GetProcessorAPICID();
   int GetProcessorCacheXSize(long int);
   bool DoesCPUSupportFeature(long int);
-  
+
   const char * GetOSName();
   const char * GetHostname();
   const char * GetOSRelease();
@@ -67,7 +67,7 @@ public:
   size_t GetTotalVirtualMemory();
   size_t GetAvailableVirtualMemory();
   size_t GetTotalPhysicalMemory();
-  size_t GetAvailablePhysicalMemory();  
+  size_t GetAvailablePhysicalMemory();
 
   /** Run the different checks */
   void RunCPUCheck();
