@@ -25,12 +25,44 @@
 #include <queue>
 #include <stdlib.h> // required for atof
 #include <assert.h>
-const char* cmTarget::TargetTypeNames[] = {
-  "EXECUTABLE", "STATIC_LIBRARY",
-  "SHARED_LIBRARY", "MODULE_LIBRARY", "UTILITY", "GLOBAL_TARGET",
-  "INSTALL_FILES", "INSTALL_PROGRAMS", "INSTALL_DIRECTORY",
-  "UNKNOWN_LIBRARY"
-};
+
+const char* cmTarget::TargetTypeNames(TargetType targetType)
+{
+  switch( targetType )
+    {
+      case cmTarget::STATIC_LIBRARY:
+        return "STATIC_LIBRARY";
+        // break; /* unreachable */
+      case cmTarget::MODULE_LIBRARY:
+        return "MODULE_LIBRARY";
+        // break; /* unreachable */
+      case cmTarget::SHARED_LIBRARY:
+        return "SHARED_LIBRARY";
+        // break; /* unreachable */
+      case cmTarget::EXECUTABLE:
+        return "EXECUTABLE";
+        // break; /* unreachable */
+      case cmTarget::UTILITY:
+        return "UTILITY";
+        // break; /* unreachable */
+      case cmTarget::GLOBAL_TARGET:
+        return "GLOBAL_TARGET";
+        // break; /* unreachable */
+      case cmTarget::INSTALL_FILES:
+        return "INSTALL_FILES";
+        // break; /* unreachable */
+      case cmTarget::INSTALL_PROGRAMS:
+        return "INSTALL_PROGRAMS";
+        // break; /* unreachable */
+      case cmTarget::INSTALL_DIRECTORY:
+        return "INSTALL_DIRECTORY";
+        // break; /* unreachable */
+      case cmTarget::UNKNOWN_LIBRARY:
+        return "UNKNOWN_LIBRARY";
+        // break; /* unreachable */
+    }
+  return 0;
+}
 
 //----------------------------------------------------------------------------
 struct cmTarget::OutputInfo
@@ -2311,7 +2343,7 @@ cmTarget::OutputInfo const* cmTarget::GetOutputInfo(const char* config)
     std::string msg = "cmTarget::GetOutputInfo called for ";
     msg += this->GetName();
     msg += " which has type ";
-    msg += cmTarget::TargetTypeNames[this->GetType()];
+    msg += cmTarget::TargetTypeNames(this->GetType());
     this->GetMakefile()->IssueMessage(cmake::INTERNAL_ERROR, msg);
     abort();
     return 0;
@@ -2610,40 +2642,7 @@ const char *cmTarget::GetProperty(const char* prop,
   // the type property returns what type the target is
   if (!strcmp(prop,"TYPE"))
     {
-    switch( this->GetType() )
-      {
-      case cmTarget::STATIC_LIBRARY:
-        return "STATIC_LIBRARY";
-        // break; /* unreachable */
-      case cmTarget::MODULE_LIBRARY:
-        return "MODULE_LIBRARY";
-        // break; /* unreachable */
-      case cmTarget::SHARED_LIBRARY:
-        return "SHARED_LIBRARY";
-        // break; /* unreachable */
-      case cmTarget::EXECUTABLE:
-        return "EXECUTABLE";
-        // break; /* unreachable */
-      case cmTarget::UTILITY:
-        return "UTILITY";
-        // break; /* unreachable */
-      case cmTarget::GLOBAL_TARGET:
-        return "GLOBAL_TARGET";
-        // break; /* unreachable */
-      case cmTarget::INSTALL_FILES:
-        return "INSTALL_FILES";
-        // break; /* unreachable */
-      case cmTarget::INSTALL_PROGRAMS:
-        return "INSTALL_PROGRAMS";
-        // break; /* unreachable */
-      case cmTarget::INSTALL_DIRECTORY:
-        return "INSTALL_DIRECTORY";
-        // break; /* unreachable */
-      case cmTarget::UNKNOWN_LIBRARY:
-        return "UNKNOWN_LIBRARY";
-        // break; /* unreachable */
-      }
-    return 0;
+    return cmTarget::TargetTypeNames(this->GetType());
     }
   bool chain = false;
   const char *retVal =
