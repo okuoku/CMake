@@ -119,7 +119,7 @@ public:
   void SetCMakeInstance(cmake *cm);
 
   ///! Get the CMake instance
-  cmake *GetCMakeInstance() { return this->CMakeInstance; };
+  cmake *GetCMakeInstance() const { return this->CMakeInstance; };
 
   void SetConfiguredFilesPath(cmGlobalGenerator* gen);
   const std::vector<cmLocalGenerator *>& GetLocalGenerators() const {
