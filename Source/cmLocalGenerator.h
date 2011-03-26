@@ -73,12 +73,8 @@ public:
   virtual void GenerateTargetManifest();
 
   ///! Get the makefile for this generator
-  cmMakefile *GetMakefile() {
+  cmMakefile *GetMakefile() const {
     return this->Makefile; };
-
-  ///! Get the makefile for this generator, const version
-    const cmMakefile *GetMakefile() const {
-      return this->Makefile; };
 
   ///! Get the GlobalGenerator this is associated with
   cmGlobalGenerator *GetGlobalGenerator() const {
