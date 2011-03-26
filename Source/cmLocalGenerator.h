@@ -81,7 +81,7 @@ public:
       return this->Makefile; };
 
   ///! Get the GlobalGenerator this is associated with
-  cmGlobalGenerator *GetGlobalGenerator() {
+  cmGlobalGenerator *GetGlobalGenerator() const {
     return this->GlobalGenerator; };
 
   ///! Set the Global Generator, done on creation by the GlobalGenerator
