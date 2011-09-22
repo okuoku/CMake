@@ -1463,6 +1463,17 @@ void cmLocalGenerator::GetTargetFlags(std::string& linkLibs,
         linkFlags += targetLinkFlags;
         linkFlags += " ";
         }
+      if(buildType.size())
+        {
+        std::string build = "STATIC_LIBRARY_FLAGS_";
+        build += buildType;
+        targetLinkFlags = target.GetProperty(build.c_str());
+        if(targetLinkFlags)
+          {
+          linkFlags += targetLinkFlags;
+          linkFlags += " ";
+          }
+        }
       }
       break;
     case cmTarget::MODULE_LIBRARY:
@@ -1502,7 +1513,10 @@ void cmLocalGenerator::GetTargetFlags(std::string& linkLibs,
         {
         linkFlags += targetLinkFlags;
         linkFlags += " ";
-        std::string configLinkFlags = targetLinkFlags;
+        }
+      if(buildType.size())
+        {
+        std::string configLinkFlags = "LINK_FLAGS_";
         configLinkFlags += buildType;
         targetLinkFlags = target.GetProperty(configLinkFlags.c_str());
         if(targetLinkFlags)
@@ -1574,7 +1588,10 @@ void cmLocalGenerator::GetTargetFlags(std::string& linkLibs,
         {
         linkFlags += targetLinkFlags;
         linkFlags += " ";
-        std::string configLinkFlags = targetLinkFlags;
+        }
+      if(buildType.size())
+        {
+        std::string configLinkFlags = "LINK_FLAGS_";
         configLinkFlags += buildType;
         targetLinkFlags = target.GetProperty(configLinkFlags.c_str());
         if(targetLinkFlags)
