@@ -133,8 +133,8 @@ public:
   const std::vector<cmLocalGenerator *>& GetLocalGenerators() const {
     return this->LocalGenerators;}
 
-  cmLocalGenerator* GetCurrentLocalGenerator() const
-  { return this->CurrentLocalGenerator; }
+  cmLocalGenerator* GetCurrentLocalGenerator()
+                                          {return this->CurrentLocalGenerator;}
 
   void SetCurrentLocalGenerator(cmLocalGenerator* lg)
                                             {this->CurrentLocalGenerator = lg;}
