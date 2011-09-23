@@ -26,7 +26,7 @@
 #include <stdlib.h> // required for atof
 #include <assert.h>
 
-const char* cmTarget::TargetTypeNames(TargetType targetType)
+const char* cmTarget::GetTargetTypeName(TargetType targetType)
 {
   switch( targetType )
     {
@@ -2343,7 +2343,7 @@ cmTarget::OutputInfo const* cmTarget::GetOutputInfo(const char* config)
     std::string msg = "cmTarget::GetOutputInfo called for ";
     msg += this->GetName();
     msg += " which has type ";
-    msg += cmTarget::TargetTypeNames(this->GetType());
+    msg += cmTarget::GetTargetTypeName(this->GetType());
     this->GetMakefile()->IssueMessage(cmake::INTERNAL_ERROR, msg);
     abort();
     return 0;
@@ -2642,7 +2642,7 @@ const char *cmTarget::GetProperty(const char* prop,
   // the type property returns what type the target is
   if (!strcmp(prop,"TYPE"))
     {
-    return cmTarget::TargetTypeNames(this->GetType());
+    return cmTarget::GetTargetTypeName(this->GetType());
     }
   bool chain = false;
   const char *retVal =
