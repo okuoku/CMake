@@ -256,7 +256,7 @@ void cmGlobalNinjaGenerator::WriteRule(std::ostream& os,
 
   // Write the command.
   cmGlobalNinjaGenerator::Indent(os, 1);
-  os << "command = " << command << "\n";
+  os << "command = " << "cmd /c " << command << "\n";
 
   // Write the description if any.
   if(!description.empty())
@@ -403,6 +403,7 @@ void cmGlobalNinjaGenerator
       {
       continue;
       }
+    /*
     if(*l != "C" && *l != "CXX")
       {
       std::string message = "The \"";
@@ -412,6 +413,7 @@ void cmGlobalNinjaGenerator
       message += "\" yet.";
       cmSystemTools::Error(message.c_str());
       }
+      */
     this->ResolveLanguageCompiler(*l, mf, optional);
     }
 }
