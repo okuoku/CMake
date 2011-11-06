@@ -287,7 +287,7 @@ std::string cmLocalNinjaGenerator::BuildCommandLine(const std::vector<std::strin
   // This happens when building a POST_BUILD value for link targets that
   // don't use POST_BUILD.
   if (cmdLines.empty())
-    return ":";
+    return "echo.";
 
   // TODO: This will work only on Unix platforms. I don't
   // want to use a link.txt file because I will loose the benefit of the
@@ -308,7 +308,7 @@ void cmLocalNinjaGenerator::AppendCustomCommandLines(const cmCustomCommand *cc, 
   cmCustomCommandGenerator ccg(*cc, this->GetConfigName(), this->Makefile);
   if (ccg.GetNumberOfCommands() > 0) {
     std::ostringstream cdCmd;
-    cdCmd << "cd ";
+    cdCmd << "cd /d ";
     if (const char* wd = cc->GetWorkingDirectory())
       cdCmd << wd;
     else

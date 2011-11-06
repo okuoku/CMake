@@ -341,7 +341,7 @@ void cmNinjaNormalTargetGenerator::WriteLinkStatement()
   // If we have any PRE_LINK commands, we need to go back to HOME_OUTPUT for
   // the link commands.
   if (!preLinkCmdLines.empty())
-    preLinkCmdLines.push_back(std::string("cd ") +
+    preLinkCmdLines.push_back(std::string("cd /d ") +
                               this->GetMakefile()->GetHomeOutputDirectory());
 
   vars["PRE_LINK"] =
